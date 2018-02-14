@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4571.robot;
 
+import org.usfirst.frc.team4571.robot.commands.RunMotors;
 import org.usfirst.frc.team4571.robot.commands.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.commands.TestDriveCommand;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
@@ -27,15 +28,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	
 	// JOYSTICKS
-	public static final RobotJoystick LEFT_JOYSTICK 	= new RobotJoystick(RobotMap.LEFT_JOYSTICK);
-	public static final RobotJoystick RIGHT_JOYSTICK 	= new RobotJoystick(RobotMap.RIGHT_JOYSTICK);
+	public static final RobotJoystick 		LEFT_JOYSTICK 		= new RobotJoystick(RobotMap.LEFT_JOYSTICK);
+	public static final RobotJoystick 		RIGHT_JOYSTICK 		= new RobotJoystick(RobotMap.RIGHT_JOYSTICK);
 	
 	// SUBSYSTEMS
-	public static final DriveSystem DRIVE_SYSTEM = new DriveSystem();
+	public static final DriveSystem 		DRIVE_SYSTEM 		= new DriveSystem();
 	
 	// COMMANDS
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		= new TeleOPDrive();
 	public static final TestDriveCommand 	TEST_DRIVE_COMMAND 	= new TestDriveCommand();
+	public static final RunMotors			RUN_MOTORS			= new RunMotors(60*30);
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -46,7 +48,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-//		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		m_chooser.addDefault("Run Motors", new RunMotors(60*30));
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
@@ -105,14 +107,13 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopInit() {
 
-		Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-//		Scheduler.getInstance().add(TELE_OP_DRIVE);
-//		Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
+		//Scheduler.getInstance().add(TELE_OP_DRIVE);
+	Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
 	}
 
 	/**

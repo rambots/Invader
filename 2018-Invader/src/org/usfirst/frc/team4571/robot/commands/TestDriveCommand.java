@@ -19,13 +19,10 @@ public class TestDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.LEFT_JOYSTICK.isButton1Pressed()) {
-    		Robot.DRIVE_SYSTEM.teleOPDrive(0.5, 0.0);
-    	} else {
-    		Robot.DRIVE_SYSTEM.stop();
-    	}
     	if(Robot.RIGHT_JOYSTICK.isButton1Pressed()) {
-    		Robot.DRIVE_SYSTEM.teleOPDrive(0.0, 0.3);
+    		Robot.DRIVE_SYSTEM.drive(0.3, 0.3);
+    	} else if(Robot.LEFT_JOYSTICK.isButton1Pressed()) {
+    		Robot.DRIVE_SYSTEM.drive(0.3, 0.3);
     	} else {
     		Robot.DRIVE_SYSTEM.stop();
     	}

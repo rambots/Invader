@@ -41,7 +41,7 @@ public class DriveSystem extends Subsystem {
 		this.differentialDrive = new DifferentialDrive(left, right);
 	}
 	
-	public void teleOPDrive(double left, double right) {
+	public void drive(double left, double right) {
 		this.differentialDrive.tankDrive(left, right);
 	}
 	
@@ -62,7 +62,7 @@ public class DriveSystem extends Subsystem {
 	}
 	
 	public void stop() {
-		this.teleOPDrive(0.0, 0.0);
+		this.drive(0.0, 0.0);
 	}
 
     public void initDefaultCommand() {}
