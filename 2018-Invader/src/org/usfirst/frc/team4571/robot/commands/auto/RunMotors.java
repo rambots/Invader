@@ -20,7 +20,7 @@ public class RunMotors extends TimedCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DRIVE_SYSTEM.drive(0.3, 0.3);
+    	Robot.DRIVE_SYSTEM.drive(0.35, 0.35);
     }
 
     // Called once after timeout

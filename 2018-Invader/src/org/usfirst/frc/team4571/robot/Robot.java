@@ -7,10 +7,10 @@
 
 package org.usfirst.frc.team4571.robot;
 
-import org.usfirst.frc.team4571.robot.commands.RunMotorsReversed;
-import org.usfirst.frc.team4571.robot.commands.TeleOPDrive;
-import org.usfirst.frc.team4571.robot.commands.TestDriveCommand;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
+import org.usfirst.frc.team4571.robot.commands.auto.RunMotorsReversed;
+import org.usfirst.frc.team4571.robot.commands.teleop.TeleOPDrive;
+import org.usfirst.frc.team4571.robot.commands.teleop.TestDriveCommand;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -114,8 +114,8 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-		//Scheduler.getInstance().add(TELE_OP_DRIVE);
-	Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
+		Scheduler.getInstance().add(TELE_OP_DRIVE);
+	//Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
 	}
 
 	/**
