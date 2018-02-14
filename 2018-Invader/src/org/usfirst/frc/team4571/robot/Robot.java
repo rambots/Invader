@@ -7,9 +7,10 @@
 
 package org.usfirst.frc.team4571.robot;
 
-import org.usfirst.frc.team4571.robot.commands.RunMotors;
+import org.usfirst.frc.team4571.robot.commands.RunMotorsReversed;
 import org.usfirst.frc.team4571.robot.commands.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.commands.TestDriveCommand;
+import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_chooser.addDefault("Run Motors", new RunMotors(60*30));
+		m_chooser.addObject("Run Motors Reversed", new RunMotorsReversed(60*30));
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
