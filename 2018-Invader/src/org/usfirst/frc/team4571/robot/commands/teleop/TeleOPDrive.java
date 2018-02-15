@@ -27,8 +27,10 @@ public class TeleOPDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DRIVE_SYSTEM.drive(	Robot.LEFT_JOYSTICK.getY_Axis(),
-    									Robot.RIGHT_JOYSTICK.getY_Axis());
+    	double left 	= Robot.LEFT_JOYSTICK.getYAxis();
+    	double right 	= Robot.RIGHT_JOYSTICK.getYAxis();
+    	
+    	Robot.DRIVE_SYSTEM.drive(left, right);
     	smartDashboard();
     }
 

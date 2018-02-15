@@ -24,4 +24,9 @@ public class RobotMap {
 							BOTTOM_LEFT_MOTOR 	= 2,
 							TOP_RIGHT_MOTOR		= 3,
 							BOTTOM_RIGHT_MOTOR	= 4;
+	
+	// PNEUMATICS
+	public static final int COMPRESSOR_MODULE 		 	 = 0,
+							TRANSMISSION_SHIFTER_FORWARD = 3,
+							TRANSMISSION_SHIFTER_REVERSE = 2;
 }

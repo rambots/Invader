@@ -22,7 +22,7 @@ public class TestDriveCommand extends Command {
     	if(Robot.RIGHT_JOYSTICK.isButton1Pressed()) {
     		Robot.DRIVE_SYSTEM.drive(0.3, 0.3);
     	} else if(Robot.LEFT_JOYSTICK.isButton1Pressed()) {
-    		Robot.DRIVE_SYSTEM.drive(0.3, 0.3);
+    		Robot.DRIVE_SYSTEM.drive(-0.3, -0.3);
     	} else {
     		Robot.DRIVE_SYSTEM.stop();
     	}

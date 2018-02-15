@@ -8,28 +8,23 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
  *
  */
 public class RunMotors extends TimedCommand {
+	private double speed;
 
-    public RunMotors(double timeout) {
+    public RunMotors(double timeout, double speed) {
         super(timeout);
         requires(Robot.DRIVE_SYSTEM);
+        this.speed = speed;
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+    protected void initialize() {}
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DRIVE_SYSTEM.drive(0.35, 0.35);
+    	Robot.DRIVE_SYSTEM.drive(speed, speed);
     }
 
-    // Called once after timeout
     protected void end() {
     	Robot.DRIVE_SYSTEM.stop();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+    protected void interrupted() {}
 }

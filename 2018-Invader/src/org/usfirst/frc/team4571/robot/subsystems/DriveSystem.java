@@ -35,10 +35,10 @@ public class DriveSystem extends Subsystem {
 		topRightMotor.setNeutralMode(NeutralMode.Brake);
 		bottomRightMotor.setNeutralMode(NeutralMode.Brake);
 		
-		SpeedControllerGroup left 	= new SpeedControllerGroup(topLeftMotor, bottomLeftMotor);
-		SpeedControllerGroup right 	= new SpeedControllerGroup(topRightMotor, bottomRightMotor);
+		SpeedControllerGroup leftMotors 	= new SpeedControllerGroup(topLeftMotor, bottomLeftMotor);
+		SpeedControllerGroup rightMotors 	= new SpeedControllerGroup(topRightMotor, bottomRightMotor);
 		
-		this.differentialDrive = new DifferentialDrive(left, right);
+		this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 	}
 	
 	public void drive(double left, double right) {

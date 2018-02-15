@@ -7,11 +7,14 @@
 
 package org.usfirst.frc.team4571.robot;
 
+import org.usfirst.frc.team4571.robot.commands.ShiftIn;
+import org.usfirst.frc.team4571.robot.commands.ShiftOut;
+import org.usfirst.frc.team4571.robot.commands.StartCompressor;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
-import org.usfirst.frc.team4571.robot.commands.auto.RunMotorsReversed;
 import org.usfirst.frc.team4571.robot.commands.teleop.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.commands.teleop.TestDriveCommand;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
+import org.usfirst.frc.team4571.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -34,14 +37,14 @@ public class Robot extends TimedRobot {
 	
 	// SUBSYSTEMS
 	public static final DriveSystem 		DRIVE_SYSTEM 		= new DriveSystem();
+	public static final Pneumatics			PNEUMATICS			= new Pneumatics();
 	
 	// COMMANDS
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		= new TeleOPDrive();
 	public static final TestDriveCommand 	TEST_DRIVE_COMMAND 	= new TestDriveCommand();
-	public static final RunMotors			RUN_MOTORS			= new RunMotors(60*30);
 
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> autoChooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -49,10 +52,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_chooser.addDefault("Run Motors", new RunMotors(60*30));
-		m_chooser.addObject("Run Motors Reversed", new RunMotorsReversed(60*30));
+		autoChooser.addDefault("Run Motors", new RunMotors(60*30, 0.25));
+		autoChooser.addObject("Run Motors Reversed", new RunMotors(60*30, -0.25));
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putData("Auto mode", autoChooser);
 	}
 
 	/**
@@ -83,7 +86,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = autoChooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -104,6 +107,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("top left speed", Robot.DRIVE_SYSTEM.getTopLeftMotorSpeed());
+    	SmartDashboard.putNumber("bottom left speed", Robot.DRIVE_SYSTEM.getBottomLeftMotorSpeed());
+    	SmartDashboard.putNumber("top right speed", Robot.DRIVE_SYSTEM.getTopRightMotorSpeed());
+    	SmartDashboard.putNumber("bottom right speed", Robot.DRIVE_SYSTEM.getBottomRightMotorSpeed());
 	}
 
 	@Override
@@ -114,8 +121,11 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-		Scheduler.getInstance().add(TELE_OP_DRIVE);
-	//Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
+//		Scheduler.getInstance().add(TELE_OP_DRIVE);
+//		Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
+		SmartDashboard.putData("Start Compressor", new StartCompressor());
+		SmartDashboard.putData("Shift In", new ShiftIn());
+		SmartDashboard.putData("Shift Out", new ShiftOut());
 	}
 
 	/**

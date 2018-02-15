@@ -10,7 +10,6 @@ public class RobotJoystick extends Joystick {
 					button3,
 					button4; 
 
-
 	public RobotJoystick(int port) {
 		super(port);
 		this.button1 = new JoystickButton(this, 1);
@@ -19,8 +18,12 @@ public class RobotJoystick extends Joystick {
 		this.button4 = new JoystickButton(this, 4);
 	}
 	
-	public double getY_Axis() {
+	public double getYAxis() {
 		return this.getRawAxis(1);
+	}
+	
+	public double getXAxis() {
+		return this.getRawAxis(0);
 	}
 	
 	public boolean isButton1Pressed() {
