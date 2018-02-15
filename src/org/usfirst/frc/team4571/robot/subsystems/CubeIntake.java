@@ -23,6 +23,8 @@ public class CubeIntake extends Subsystem{
 		this.leftCubeMotor = new WPI_VictorSPX(RobotMap.LEFT_CUBE_MOTOR);
 		this.rightCubeMotor = new WPI_VictorSPX(RobotMap.RIGHT_CUBE_MOTOR);
 		this.ArmUpandDown = new DoubleSolenoid(RobotMap.ARM_UP, RobotMap.ARM_DOWN);
+		this.leftCubeMotor.setNeutralMode(NeutralMode.Coast);
+		this.rightCubeMotor.setNeutralMode(NeutralMode.Coast);
 		//SpeedControllerGroup left = new SpeedControllerGroup(leftCubeMotor);
 		//SpeedControllerGroup right = new SpeedControllerGroup(rightCubeMotor);
 		
