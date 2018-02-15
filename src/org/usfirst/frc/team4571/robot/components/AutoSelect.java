@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4571.components;
+package org.usfirst.frc.team4571.robot.components;
 
 import java.util.HashMap;
 import java.util.Map;
