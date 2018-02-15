@@ -24,4 +24,11 @@ public class RobotMap {
 							BOTTOM_LEFT_MOTOR 	= 2,
 							TOP_RIGHT_MOTOR		= 3,
 							BOTTOM_RIGHT_MOTOR	= 4;
+	
+	// IntakeArm
+	public static final int LEFT_CUBE_MOTOR = 9,
+							RIGHT_CUBE_MOTOR = 10,
+							ARM_UP = -1,
+							ARM_DOWN = -2;
+	 
 }
