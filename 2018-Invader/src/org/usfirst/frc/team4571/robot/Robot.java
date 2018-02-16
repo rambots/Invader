@@ -10,6 +10,7 @@ package org.usfirst.frc.team4571.robot;
 import org.usfirst.frc.team4571.robot.commands.ShiftIn;
 import org.usfirst.frc.team4571.robot.commands.ShiftOut;
 import org.usfirst.frc.team4571.robot.commands.StartCompressor;
+import org.usfirst.frc.team4571.robot.commands.StopCompressor;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
 import org.usfirst.frc.team4571.robot.commands.teleop.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.commands.teleop.TestDriveCommand;
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
 	// COMMANDS
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		= new TeleOPDrive();
 	public static final TestDriveCommand 	TEST_DRIVE_COMMAND 	= new TestDriveCommand();
+	public static final StopCompressor		STOP_COMPRESSOR		= new StopCompressor();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -52,7 +54,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		autoChooser.addDefault("Run Motors", new RunMotors(60*30, 0.25));
+		autoChooser.addDefault("Run Motors", new RunMotors(60*30, 0.4));
 		autoChooser.addObject("Run Motors Reversed", new RunMotors(60*30, -0.25));
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", autoChooser);
@@ -65,7 +67,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		Scheduler.getInstance().add(STOP_COMPRESSOR);
 	}
 
 	@Override
@@ -126,6 +128,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Start Compressor", new StartCompressor());
 		SmartDashboard.putData("Shift In", new ShiftIn());
 		SmartDashboard.putData("Shift Out", new ShiftOut());
+		
+		Scheduler.getInstance().add(STOP_COMPRESSOR);
 	}
 
 	/**

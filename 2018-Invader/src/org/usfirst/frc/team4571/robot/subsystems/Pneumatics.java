@@ -26,6 +26,10 @@ public class Pneumatics extends Subsystem {
 		compressor.setClosedLoopControl(true);
 	}
     
+    public void stopCompressor() {
+    	compressor.setClosedLoopControl(false);
+    }
+    
     public void pushInShifter() {
     	this.transmissionShifter.set(Value.kReverse);
     }

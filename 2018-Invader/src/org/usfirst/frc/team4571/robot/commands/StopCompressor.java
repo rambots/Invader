@@ -7,27 +7,23 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StartCompressor extends Command {
+public class StopCompressor extends Command {
 
-    public StartCompressor() {
+    public StopCompressor() {
     	requires(Robot.PNEUMATICS);
     }
 
     protected void initialize() {}
 
     protected void execute() {
-    	Robot.PNEUMATICS.startCompressor();
+    	Robot.PNEUMATICS.stopCompressor();
     }
 
     protected boolean isFinished() {
         return false;
     }
 
-    protected void end() {
-    	Robot.PNEUMATICS.stopCompressor();
-    }
+    protected void end() {}
 
-    protected void interrupted() {
-    	Robot.PNEUMATICS.stopCompressor();
-    }
+    protected void interrupted() {}
 }
