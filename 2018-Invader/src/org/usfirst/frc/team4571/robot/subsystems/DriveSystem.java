@@ -30,6 +30,11 @@ public class DriveSystem extends Subsystem {
 		this.topRightMotor.setSafetyEnabled(true);
 		this.bottomRightMotor.setSafetyEnabled(true);
 		
+		this.topLeftMotor.setExpiration(0.1);
+		this.bottomLeftMotor.setExpiration(0.1);
+		this.topRightMotor.setExpiration(0.1);
+		this.bottomRightMotor.setExpiration(0.1);
+		
 		topLeftMotor.setNeutralMode(NeutralMode.Brake);
 		bottomLeftMotor.setNeutralMode(NeutralMode.Brake);
 		topRightMotor.setNeutralMode(NeutralMode.Brake);
@@ -39,6 +44,7 @@ public class DriveSystem extends Subsystem {
 		SpeedControllerGroup rightMotors 	= new SpeedControllerGroup(topRightMotor, bottomRightMotor);
 		
 		this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
+		this.differentialDrive.setExpiration(0.1);
 	}
 	
 	public void drive(double left, double right) {

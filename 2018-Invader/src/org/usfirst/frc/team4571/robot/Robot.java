@@ -56,7 +56,6 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		autoChooser.addDefault("Run Motors", new RunMotors(60*30, 0.4));
 		autoChooser.addObject("Run Motors Reversed", new RunMotors(60*30, -0.25));
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", autoChooser);
 	}
 
@@ -101,6 +100,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
+		Scheduler.getInstance().add(STOP_COMPRESSOR);
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-//		Scheduler.getInstance().add(TELE_OP_DRIVE);
+		Scheduler.getInstance().add(TELE_OP_DRIVE);
 //		Scheduler.getInstance().add(TEST_DRIVE_COMMAND);
 		SmartDashboard.putData("Start Compressor", new StartCompressor());
 		SmartDashboard.putData("Shift In", new ShiftIn());
@@ -145,5 +145,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+
+	@Override
+	public String toString() {
+		return "Robot [m_autonomousCommand=" + m_autonomousCommand + ", autoChooser=" + autoChooser + "]";
 	}
 }
