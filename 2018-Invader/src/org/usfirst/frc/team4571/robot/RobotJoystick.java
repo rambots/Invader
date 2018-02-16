@@ -3,6 +3,7 @@ package org.usfirst.frc.team4571.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class RobotJoystick extends Joystick {
 	private Button 	button1,
@@ -40,5 +41,14 @@ public class RobotJoystick extends Joystick {
 	
 	public boolean isButton4Pressed() {
 		return this.button4.get();
+	}
+	
+	public Button getButton1() {
+		return this.button1;
+	}
+	
+	public RobotJoystick button1WhenPressed(Command command) {
+		this.button1.whenPressed(command);
+		return this;
 	}
 }

@@ -27,6 +27,6 @@ public class RobotMap {
 	
 	// PNEUMATICS
 	public static final int COMPRESSOR_MODULE 		 	 = 0,
-							TRANSMISSION_SHIFTER_FORWARD = 3,
-							TRANSMISSION_SHIFTER_REVERSE = 2;
+							TRANSMISSION_SHIFTER_FORWARD = 2,
+							TRANSMISSION_SHIFTER_REVERSE = 3;
 }
