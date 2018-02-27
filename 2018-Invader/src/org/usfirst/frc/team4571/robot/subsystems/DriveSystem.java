@@ -4,7 +4,9 @@ import org.usfirst.frc.team4571.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -18,6 +20,7 @@ public class DriveSystem extends Subsystem {
 								topRightMotor,
 								bottomRightMotor;
 	private DifferentialDrive 	differentialDrive;
+	private final AHRS navX;
 	
 	public DriveSystem() {
 		this.topLeftMotor 		= new WPI_TalonSRX(RobotMap.TOP_LEFT_MOTOR);
@@ -46,9 +49,11 @@ public class DriveSystem extends Subsystem {
 		this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 		this.differentialDrive.setExpiration(0.1);
 		this.differentialDrive.setSafetyEnabled(false);
+		
+		this.navX = new AHRS(SPI.Port.kMXP);
 	}
 	
-//	public void drive(double left, double right) {
+	//public void drive(double left, double right) {
 //		this.differentialDrive.tankDrive(left, right);
 //	}
 	
@@ -73,7 +78,7 @@ public class DriveSystem extends Subsystem {
 	}
 	
 	public void stop() {
-		this.drive(0.0, 0.0);
+		this.drive(0.0, 0.0, true);
 	}
 
     public void initDefaultCommand() {}
