@@ -48,10 +48,14 @@ public class DriveSystem extends Subsystem {
 		this.differentialDrive.setSafetyEnabled(false);
 	}
 	
-	public void drive(double left, double right) {
-		this.differentialDrive.tankDrive(left, right);
-	}
+//	public void drive(double left, double right) {
+//		this.differentialDrive.tankDrive(left, right);
+//	}
 	
+	public void drive(double left, double right, boolean squaredInputs) {
+		this.differentialDrive.tankDrive(left, right, squaredInputs);
+	
+	}
 	public double getTopLeftMotorSpeed() {
 		return this.topLeftMotor.get();
 	}
