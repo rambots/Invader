@@ -25,10 +25,10 @@ public class DriveSystem extends Subsystem {
 		this.topRightMotor 		= new WPI_TalonSRX(RobotMap.TOP_RIGHT_MOTOR);
 		this.bottomRightMotor 	= new WPI_TalonSRX(RobotMap.BOTTOM_RIGHT_MOTOR);
 		
-		this.topLeftMotor.setSafetyEnabled(true);
-		this.bottomLeftMotor.setSafetyEnabled(true);
-		this.topRightMotor.setSafetyEnabled(true);
-		this.bottomRightMotor.setSafetyEnabled(true);
+		this.topLeftMotor.setSafetyEnabled(false);
+		this.bottomLeftMotor.setSafetyEnabled(false);
+		this.topRightMotor.setSafetyEnabled(false);
+		this.bottomRightMotor.setSafetyEnabled(false);
 		
 		this.topLeftMotor.setExpiration(0.1);
 		this.bottomLeftMotor.setExpiration(0.1);
@@ -45,6 +45,7 @@ public class DriveSystem extends Subsystem {
 		
 		this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 		this.differentialDrive.setExpiration(0.1);
+		this.differentialDrive.setSafetyEnabled(false);
 	}
 	
 	public void drive(double left, double right) {

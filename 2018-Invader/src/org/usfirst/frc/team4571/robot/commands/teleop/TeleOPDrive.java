@@ -13,7 +13,9 @@ public class TeleOPDrive extends Command {
         requires(Robot.DRIVE_SYSTEM);
     }
 
-    protected void initialize() {}
+    protected void initialize() {
+    	Robot.DRIVE_SYSTEM.stop();
+    }
 
     protected void execute() {
     	double left 	= Robot.LEFT_JOYSTICK.getYAxis();

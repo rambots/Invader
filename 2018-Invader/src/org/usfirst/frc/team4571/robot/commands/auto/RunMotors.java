@@ -8,18 +8,18 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
  *
  */
 public class RunMotors extends TimedCommand {
-	private double speed;
+	private double power;
 
-    public RunMotors(double timeout, double speed) {
+    public RunMotors(double timeout, double power) {
         super(timeout);
         requires(Robot.DRIVE_SYSTEM);
-        this.speed = speed;
+        this.power = power;
     }
 
     protected void initialize() {}
 
     protected void execute() {
-    	Robot.DRIVE_SYSTEM.drive(speed, speed);
+    	Robot.DRIVE_SYSTEM.drive(power, power);
     }
 
     protected void end() {

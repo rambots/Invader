@@ -9,14 +9,30 @@ public class RobotJoystick extends Joystick {
 	private Button 	button1,
 					button2,
 					button3,
-					button4; 
+					button4,
+					button5,
+					button6,
+					button7,
+					button8,
+					button9,
+					button10,
+					button11,
+					button12; 
 
 	public RobotJoystick(int port) {
 		super(port);
-		this.button1 = new JoystickButton(this, 1);
-		this.button2 = new JoystickButton(this, 2);
-		this.button3 = new JoystickButton(this, 3);
-		this.button4 = new JoystickButton(this, 4);
+		this.button1  = new JoystickButton(this, 1);
+		this.button2  = new JoystickButton(this, 2);
+		this.button3  = new JoystickButton(this, 3);
+		this.button4  = new JoystickButton(this, 4);
+		this.button5  = new JoystickButton(this, 5);
+		this.button6  = new JoystickButton(this, 6);
+		this.button7  = new JoystickButton(this, 7);
+		this.button8  = new JoystickButton(this, 8);
+		this.button9  = new JoystickButton(this, 9);
+		this.button10 = new JoystickButton(this, 10);
+		this.button11 = new JoystickButton(this, 11);
+		this.button12 = new JoystickButton(this, 12);
 	}
 	
 	public double getYAxis() {
@@ -43,12 +59,143 @@ public class RobotJoystick extends Joystick {
 		return this.button4.get();
 	}
 	
+	public boolean isButton5Pressed() {
+		return this.button5.get();
+	}
+	
+	public boolean isButton6Pressed() {
+		return this.button6.get();
+	}
+	
+	public boolean isButton7Pressed() {
+		return this.button7.get();
+	}
+	
+	public boolean isButton8Pressed() {
+		return this.button8.get();
+	}
+	
+	public boolean isButton9Pressed() {
+		return this.button9.get();
+	}
+	
+	public boolean isButton10Pressed() {
+		return this.button10.get();
+	}
+	
+	public boolean isButton11Pressed() {
+		return this.button11.get();
+	}
+	
+	public boolean isButton12Pressed() {
+		return this.button12.get();
+	}
+	
 	public Button getButton1() {
 		return this.button1;
 	}
 	
+	public Button getButton2() {
+		return this.button2;
+	}
+	
+	public Button getButton3() {
+		return this.button3;
+	}
+	
+	public Button getButton4() {
+		return this.button4;
+	}
+	
+	public Button getButton5() {
+		return this.button5;
+	}
+	
+	public Button getButton6() {
+		return this.button6;
+	}
+	
+	public Button getButton7() {
+		return this.button7;
+	}
+	
+	public Button getButton8() {
+		return this.button8;
+	}
+	
+	public Button getButton9() {
+		return this.button9;
+	}
+	
+	public Button getButton10() {
+		return this.button10;
+	}
+	
+	public Button getButton11() {
+		return this.button11;
+	}
+	
+	public Button getButton12() {
+		return this.button12;
+	}
+	
 	public RobotJoystick button1WhenPressed(Command command) {
 		this.button1.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button2WhenPressed(Command command) {
+		this.button2.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button3WhenPressed(Command command) {
+		this.button3.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button4WhenPressed(Command command) {
+		this.button4.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button5WhenPressed(Command command) {
+		this.button5.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button6WhenPressed(Command command) {
+		this.button6.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button7WhenPressed(Command command) {
+		this.button7.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button8WhenPressed(Command command) {
+		this.button8.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button9WhenPressed(Command command) {
+		this.button9.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button10WhenPressed(Command command) {
+		this.button10.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button11WhenPressed(Command command) {
+		this.button11.whenPressed(command);
+		return this;
+	}
+	
+	public RobotJoystick button12WhenPressed(Command command) {
+		this.button12.whenPressed(command);
 		return this;
 	}
 }

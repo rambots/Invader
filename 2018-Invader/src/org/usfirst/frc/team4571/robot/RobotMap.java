@@ -29,4 +29,8 @@ public class RobotMap {
 	public static final int COMPRESSOR_MODULE 		 	 = 0,
 							TRANSMISSION_SHIFTER_FORWARD = 2,
 							TRANSMISSION_SHIFTER_REVERSE = 3;
+	
+	// ARM SYSTEM
+	public static final int LEFT_ARM_MOTOR  = 5,
+							RIGHT_ARM_MOTOR = 6;
 }
