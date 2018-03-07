@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="build/jars/WPILib.jar"/>
 	<classpathentry kind="lib" path="build/jars/wpiutil.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Rambots/wpilib/user/java/lib/navx_frc.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

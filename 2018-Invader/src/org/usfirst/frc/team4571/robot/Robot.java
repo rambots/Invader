@@ -17,6 +17,7 @@ import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team4571.robot.subsystems.Pneumatics;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -59,6 +60,7 @@ public class Robot extends TimedRobot {
 		autoChooser.addDefault("Run Motors", new RunMotors(60*30, 0.4));
 		autoChooser.addObject("Run Motors Reversed", new RunMotors(60*30, -0.25));
 		SmartDashboard.putData("Auto mode", autoChooser);
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
