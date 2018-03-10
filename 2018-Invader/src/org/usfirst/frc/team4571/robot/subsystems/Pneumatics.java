@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * This subsystem contains all the pneumatic components of the robot.
+ * 
+ * @author Mahim
  */
 public class Pneumatics extends Subsystem {
 	Compressor 		compressor;

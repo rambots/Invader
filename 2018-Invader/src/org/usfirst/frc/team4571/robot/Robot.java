@@ -10,10 +10,11 @@ package org.usfirst.frc.team4571.robot;
 import org.usfirst.frc.team4571.robot.commands.StartCompressor;
 import org.usfirst.frc.team4571.robot.commands.StopCompressor;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
-import org.usfirst.frc.team4571.robot.commands.teleop.ArmCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.ClimberCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.commands.teleop.ToggleShifter;
 import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
+import org.usfirst.frc.team4571.robot.subsystems.ClimberSystem;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team4571.robot.subsystems.Pneumatics;
 
@@ -40,12 +41,13 @@ public class Robot extends TimedRobot {
 	public static final DriveSystem 		DRIVE_SYSTEM 		= new DriveSystem();
 	public static final Pneumatics			PNEUMATICS			= new Pneumatics();
 	public static final ArmSystem			ARM_SYSTEM			= new ArmSystem();
+	public static final ClimberSystem		CLIMBER_SYSTEM		= new ClimberSystem();
 	
 	// COMMANDS
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		= new TeleOPDrive();
 	public static final StopCompressor		STOP_COMPRESSOR		= new StopCompressor();
 	public static final ToggleShifter		TOGGLE_SHIFTER		= new ToggleShifter(Robot.LEFT_JOYSTICK.getButton1());
-	public static final ArmCommand			ARM_COMMAND			= new ArmCommand(LEFT_JOYSTICK.getButton11(), LEFT_JOYSTICK.getButton12());
+	public static final ClimberCommand      CLIMBER_COMMAND		= new ClimberCommand();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -104,6 +106,17 @@ public class Robot extends TimedRobot {
 		}
 		Scheduler.getInstance().add(STOP_COMPRESSOR);
 	}
+	
+	/**
+	 * This method contains the information you want to track an test during tele 
+	 * operated period
+	 */
+	public void log() {
+		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
+    	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
+    	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
+    	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
+	}
 
 	/**
 	 * This function is called periodically during autonomous.
@@ -121,9 +134,10 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		
 		Scheduler.getInstance().add(TELE_OP_DRIVE);
-		Scheduler.getInstance().add(ARM_COMMAND);
 		Robot.LEFT_JOYSTICK.button1WhenPressed(TOGGLE_SHIFTER);
+		Scheduler.getInstance().add(CLIMBER_COMMAND);
 		SmartDashboard.putData("Start Compressor", new StartCompressor());
 	}
 
@@ -133,10 +147,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
-    	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
-    	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
-    	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
+		log();
 	}
 
 	/**

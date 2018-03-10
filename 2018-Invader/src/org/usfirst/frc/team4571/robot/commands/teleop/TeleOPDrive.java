@@ -5,7 +5,9 @@ import org.usfirst.frc.team4571.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * This is the teleOP command of controlling the tank drive using 2 Joysticks
+ * 
+ * @author Mahim
  */
 public class TeleOPDrive extends Command {
 
@@ -21,7 +23,7 @@ public class TeleOPDrive extends Command {
     	double left 	= Robot.LEFT_JOYSTICK.getYAxis();
     	double right 	= Robot.RIGHT_JOYSTICK.getYAxis();
     	
-    	Robot.DRIVE_SYSTEM.drive(left, right);
+    	Robot.DRIVE_SYSTEM.drive(left, right, true);
     }
 
     protected boolean isFinished() {

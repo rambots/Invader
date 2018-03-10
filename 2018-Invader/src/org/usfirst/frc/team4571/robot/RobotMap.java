@@ -15,22 +15,37 @@ package org.usfirst.frc.team4571.robot;
  */
 public class RobotMap {
 	
-	// JOYSTICKS
-	public static final int LEFT_JOYSTICK 	= 0,
-							RIGHT_JOYSTICK 	= 1;
+	/**
+	 * Joystick ports
+	 */
+	public static final int LEFT_JOYSTICK  = 0,
+							RIGHT_JOYSTICK = 1;
 	
-	// DRIVE SYSTEM
-	public static final int TOP_LEFT_MOTOR 		= 1,
-							BOTTOM_LEFT_MOTOR 	= 2,
-							TOP_RIGHT_MOTOR		= 3,
-							BOTTOM_RIGHT_MOTOR	= 4;
+	/**
+	 * Drive system motor channels
+	 */
+	public static final int TOP_LEFT_MOTOR 	   = 1,
+							BOTTOM_LEFT_MOTOR  = 2,
+							TOP_RIGHT_MOTOR	   = 3,
+							BOTTOM_RIGHT_MOTOR = 4;
 	
-	// PNEUMATICS
+	/**
+	 * Pneumatic component channels
+	 */
 	public static final int COMPRESSOR_MODULE 		 	 = 0,
 							TRANSMISSION_SHIFTER_FORWARD = 2,
 							TRANSMISSION_SHIFTER_REVERSE = 3;
 	
-	// ARM SYSTEM
-	public static final int LEFT_ARM_MOTOR  = 5,
-							RIGHT_ARM_MOTOR = 6;
+	/**
+	 * Arm system motor channels
+	 */
+	public static final int LEFT_ARM_MOTOR     = 5,
+							RIGHT_ARM_MOTOR    = 6,
+							LEFT_PULLEY_MOTOR  = 8,
+							RIGHT_PULLEY_MOTOR = 9;
+	
+	/**
+	 * Climber system motor channels
+	 */
+	public static final int CLIMBER_MOTOR = 10;
 }
