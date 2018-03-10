@@ -30,7 +30,7 @@ public class RunMotors extends TimedCommand {
     protected void initialize() {}
 
     protected void execute() {
-    	Robot.DRIVE_SYSTEM.drive(power, power);
+    	Robot.DRIVE_SYSTEM.drive(power, power, true);
     }
 
     protected void end() {

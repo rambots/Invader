@@ -100,6 +100,6 @@ public class DriveSystem extends Subsystem {
 	}
 	
 	public void stop() {
-		this.drive(0.0, 0.0);
+		this.drive(0.0, 0.0, true);
 	}
 }
