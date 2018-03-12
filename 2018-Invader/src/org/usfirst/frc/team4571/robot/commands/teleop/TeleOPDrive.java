@@ -20,8 +20,8 @@ public class TeleOPDrive extends Command {
     }
 
     protected void execute() {
-    	double left 	= Robot.LEFT_JOYSTICK.getYAxis();
-    	double right 	= Robot.RIGHT_JOYSTICK.getYAxis();
+    	double left  = Robot.LEFT_JOYSTICK.getYAxis();
+    	double right = Robot.RIGHT_JOYSTICK.getYAxis();
     	
     	Robot.DRIVE_SYSTEM.drive(left, right, true);
     }

@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4571.robot;
 
+import org.usfirst.frc.team4571.robot.commands.LEDCommand;
 import org.usfirst.frc.team4571.robot.commands.StartCompressor;
 import org.usfirst.frc.team4571.robot.commands.StopCompressor;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
@@ -16,6 +17,7 @@ import org.usfirst.frc.team4571.robot.commands.teleop.ToggleShifter;
 import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
 import org.usfirst.frc.team4571.robot.subsystems.ClimberSystem;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
+import org.usfirst.frc.team4571.robot.subsystems.LEDSubsystem;
 import org.usfirst.frc.team4571.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -43,12 +45,14 @@ public class Robot extends TimedRobot {
 	public static final Pneumatics			PNEUMATICS			= new Pneumatics();
 	public static final ArmSystem			ARM_SYSTEM			= new ArmSystem();
 	public static final ClimberSystem		CLIMBER_SYSTEM		= new ClimberSystem();
+	public static final LEDSubsystem		LEDS_SUBSYSTEM		= new LEDSubsystem();
 	
 	// COMMANDS
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		= new TeleOPDrive();
 	public static final StopCompressor		STOP_COMPRESSOR		= new StopCompressor();
 	public static final ToggleShifter		TOGGLE_SHIFTER		= new ToggleShifter(Robot.LEFT_JOYSTICK.getButton1());
 	public static final ClimberCommand      CLIMBER_COMMAND		= new ClimberCommand();
+	public static final LEDCommand			LED_COMMAND			= new LEDCommand();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -138,9 +142,11 @@ public class Robot extends TimedRobot {
 		}
 		
 		Scheduler.getInstance().add(TELE_OP_DRIVE);
+		Scheduler.getInstance().add(LED_COMMAND);
 		Robot.LEFT_JOYSTICK.button1WhenPressed(TOGGLE_SHIFTER);
 		Scheduler.getInstance().add(CLIMBER_COMMAND);
 		SmartDashboard.putData("Start Compressor", new StartCompressor());
+		
 	}
 
 	/**

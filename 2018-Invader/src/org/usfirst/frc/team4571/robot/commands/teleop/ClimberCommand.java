@@ -17,6 +17,7 @@ public class ClimberCommand extends Command {
     }
 
     protected void execute() {
+    	//TODO: assign the elevator to buttons rather than joysticks
     	Robot.CLIMBER_SYSTEM.setPower(Robot.LEFT_JOYSTICK.getYAxis());
     }
 

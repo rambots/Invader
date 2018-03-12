@@ -13,24 +13,24 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * This subsystem contains all the components of the drive system.
  * Such as:
  * 
- * <li>The motors for the transmissions
- * <li>The encoders
- * <li>A gyroscope
+ * <li> The motors for the transmissions
+ * <li> The encoders
+ * <li> A gyroscope
  * 
  * @author Mahim
  */
 public class DriveSystem extends Subsystem {
-	private WPI_TalonSRX 		topLeftMotor,
-								bottomLeftMotor,
-								topRightMotor,
-								bottomRightMotor;
-	private DifferentialDrive 	differentialDrive;
+	private WPI_TalonSRX 	  topLeftMotor,
+							  bottomLeftMotor,
+						      topRightMotor,
+							  bottomRightMotor;
+	private DifferentialDrive differentialDrive;
 	
 	public DriveSystem() {
-		this.topLeftMotor 		= new WPI_TalonSRX(RobotMap.TOP_LEFT_MOTOR);
-		this.bottomLeftMotor 	= new WPI_TalonSRX(RobotMap.BOTTOM_LEFT_MOTOR);
-		this.topRightMotor 		= new WPI_TalonSRX(RobotMap.TOP_RIGHT_MOTOR);
-		this.bottomRightMotor 	= new WPI_TalonSRX(RobotMap.BOTTOM_RIGHT_MOTOR);
+		this.topLeftMotor 	  = new WPI_TalonSRX(RobotMap.TOP_LEFT_MOTOR);
+		this.bottomLeftMotor  = new WPI_TalonSRX(RobotMap.BOTTOM_LEFT_MOTOR);
+		this.topRightMotor 	  = new WPI_TalonSRX(RobotMap.TOP_RIGHT_MOTOR);
+		this.bottomRightMotor = new WPI_TalonSRX(RobotMap.BOTTOM_RIGHT_MOTOR);
 		
 		this.topLeftMotor.setExpiration(0.1);
 		this.bottomLeftMotor.setExpiration(0.1);
@@ -47,8 +47,8 @@ public class DriveSystem extends Subsystem {
 		topRightMotor.setNeutralMode(NeutralMode.Brake);
 		bottomRightMotor.setNeutralMode(NeutralMode.Brake);
 		
-		SpeedControllerGroup leftMotors 	= new SpeedControllerGroup(topLeftMotor, bottomLeftMotor);
-		SpeedControllerGroup rightMotors 	= new SpeedControllerGroup(topRightMotor, bottomRightMotor);
+		SpeedControllerGroup leftMotors  = new SpeedControllerGroup(topLeftMotor, bottomLeftMotor);
+		SpeedControllerGroup rightMotors = new SpeedControllerGroup(topRightMotor, bottomRightMotor);
 		
 		this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 		this.differentialDrive.setExpiration(0.1);

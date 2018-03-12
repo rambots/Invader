@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 
 /**
  * This is an autonomous command, this is used to test the new transmissions
- * it us used to run for 30 minutes, however this class is designed that you can
+ * it is used to run for 30 minutes, however this class is designed that you can
  * make other commands to run for however long you want.
  * 
  * @author Mahim

@@ -11,12 +11,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * This subsystem contains all the components of the arm system.
  * Such as:
  * 
- * <li>The motors for the arms to intake and outtake the power cubes.
- * 
- * <li>The motor to elevate the arms.
- * 
- * <li>The motors that controls the pulley to raise the arms up
- * 	   and down.
+ * <li> The motors for the arms to intake and outtake the power cubes.
+ * <li> The motor to elevate the arms.
+ * <li> The motors that controls the pulley to raise the arms up
+ * 	    and down.
  * 
  * @author Mahim
  */
