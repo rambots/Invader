@@ -6,18 +6,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class RobotJoystick extends Joystick {
-	private Button 	button1,
-					button2,
-					button3,
-					button4,
-					button5,
-					button6,
-					button7,
-					button8,
-					button9,
-					button10,
-					button11,
-					button12; 
+	private Button 	button1,  button2,
+					button3,  button4,
+					button5,  button6,
+					button7,  button8,
+					button9,  button10,
+					button11, button12; 
 
 	public RobotJoystick(int port) {
 		super(port);
@@ -42,55 +36,7 @@ public class RobotJoystick extends Joystick {
 	public double getXAxis() {
 		return this.getRawAxis(0);
 	}
-	
-	public boolean isButton1Pressed() {
-		return this.button1.get();
-	}
-	
-	public boolean isButton2Pressed() {
-		return this.button2.get();
-	}
-	
-	public boolean isButton3Pressed() {
-		return this.button3.get();
-	}
-	
-	public boolean isButton4Pressed() {
-		return this.button4.get();
-	}
-	
-	public boolean isButton5Pressed() {
-		return this.button5.get();
-	}
-	
-	public boolean isButton6Pressed() {
-		return this.button6.get();
-	}
-	
-	public boolean isButton7Pressed() {
-		return this.button7.get();
-	}
-	
-	public boolean isButton8Pressed() {
-		return this.button8.get();
-	}
-	
-	public boolean isButton9Pressed() {
-		return this.button9.get();
-	}
-	
-	public boolean isButton10Pressed() {
-		return this.button10.get();
-	}
-	
-	public boolean isButton11Pressed() {
-		return this.button11.get();
-	}
-	
-	public boolean isButton12Pressed() {
-		return this.button12.get();
-	}
-	
+		
 	public Button getButton1() {
 		return this.button1;
 	}

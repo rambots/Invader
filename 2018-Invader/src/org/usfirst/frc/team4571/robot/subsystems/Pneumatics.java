@@ -14,12 +14,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Pneumatics extends Subsystem {
 	Compressor 		compressor;
-	DoubleSolenoid 	transmissionShifter;
+	DoubleSolenoid 	transmissionShifter,
+					testSolenoid;
 	
 	public Pneumatics() {
 		this.compressor 		 = new Compressor(RobotMap.COMPRESSOR_MODULE);
 		this.transmissionShifter = new DoubleSolenoid(RobotMap.TRANSMISSION_SHIFTER_FORWARD, 
 													  RobotMap.TRANSMISSION_SHIFTER_REVERSE);
+		this.testSolenoid		 = new DoubleSolenoid(RobotMap.TEST_SOLENOID_FORWARD,
+													  RobotMap.TEST_SOLENOID_REVERSE);
 	}
 
     public void initDefaultCommand() {}
@@ -38,5 +41,13 @@ public class Pneumatics extends Subsystem {
     
     public void pushOutShifter() {
     	this.transmissionShifter.set(Value.kForward);
+    }
+    
+    public void pushInTestSolenoid() {
+    	this.testSolenoid.set(Value.kReverse);
+    }
+    
+    public void pushOutTestSolenoid() {
+    	this.testSolenoid.set(Value.kForward);
     }
 }

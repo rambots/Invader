@@ -15,42 +15,33 @@ package org.usfirst.frc.team4571.robot;
  */
 public class RobotMap {
 	
-	/**
-	 * Joystick ports
-	 */
+	/** Joystick ports */
 	public static final int LEFT_JOYSTICK  = 0,
 							RIGHT_JOYSTICK = 1;
 	
-	/**
-	 * Drive system motor channels
-	 */
-	public static final int TOP_LEFT_MOTOR 	   = 0,
-							BOTTOM_LEFT_MOTOR  = 1,
+	/** Drive system motor channels */
+	public static final int TOP_LEFT_MOTOR 	   = 8,
+							BOTTOM_LEFT_MOTOR  = 9,
 							TOP_RIGHT_MOTOR	   = 2,
 							BOTTOM_RIGHT_MOTOR = 3;
 	
-	/**
-	 * Pneumatic component channels
-	 */
+	/** Pneumatic component channels */
 	public static final int COMPRESSOR_MODULE 		 	 = 0,
-							TRANSMISSION_SHIFTER_FORWARD = 2,
-							TRANSMISSION_SHIFTER_REVERSE = 3;
+							TRANSMISSION_SHIFTER_FORWARD = 0,
+							TRANSMISSION_SHIFTER_REVERSE = 1,
+							TEST_SOLENOID_FORWARD 		 = 2,
+							TEST_SOLENOID_REVERSE		 = 3;
 	
-	/**
-	 * Arm system motor channels
-	 */
+	/** Arm system motor channels */
 	public static final int LEFT_ARM_MOTOR     = 4,
-							RIGHT_ARM_MOTOR    = 11,
-							LEFT_PULLEY_MOTOR  = 14,
-							RIGHT_PULLEY_MOTOR = 13;
+							RIGHT_ARM_MOTOR    = 5,
+							ELEVATOR_MOTOR	   = 1,
+							LEFT_PULLEY_MOTOR  = 6,
+							RIGHT_PULLEY_MOTOR = 7;
 	
-	/**
-	 * Climber system motor channels
-	 */
+	/** Climber system motor channels */
 	public static final int CLIMBER_MOTOR = 10;
 	
-	/**
-	 * REV Blinkin PWM channel
-	 */
+	/** REV Blinkin PWM channel */
 	public static final int REV_BLINKIN_CHANNEL = 0;
 }

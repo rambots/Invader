@@ -17,7 +17,7 @@ public class LEDCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.LEDS_SUBSYSTEM.heartbeatGray();
+    	Robot.LEDS_SUBSYSTEM.rainbowPartyPalette();
     }
 
     protected boolean isFinished() {

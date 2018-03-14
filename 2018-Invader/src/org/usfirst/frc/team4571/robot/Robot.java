@@ -11,9 +11,12 @@ import org.usfirst.frc.team4571.robot.commands.LEDCommand;
 import org.usfirst.frc.team4571.robot.commands.StartCompressor;
 import org.usfirst.frc.team4571.robot.commands.StopCompressor;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
-import org.usfirst.frc.team4571.robot.commands.teleop.ClimberCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.TeleOPDrive;
-import org.usfirst.frc.team4571.robot.commands.teleop.ToggleShifter;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmElevatorCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.climber.ClimberCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.drive.TeleOPDrive;
+import org.usfirst.frc.team4571.robot.commands.teleop.drive.ToggleShifter;
+import org.usfirst.frc.team4571.robot.commands.teleop.testing.ToggleTestSolenoid;
 import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
 import org.usfirst.frc.team4571.robot.subsystems.ClimberSystem;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
@@ -37,22 +40,31 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	
 	// JOYSTICKS
-	public static final RobotJoystick 		LEFT_JOYSTICK 		= new RobotJoystick(RobotMap.LEFT_JOYSTICK);
-	public static final RobotJoystick 		RIGHT_JOYSTICK 		= new RobotJoystick(RobotMap.RIGHT_JOYSTICK);
+	public static final RobotJoystick 		LEFT_JOYSTICK 		 = new RobotJoystick(RobotMap.LEFT_JOYSTICK);
+	public static final RobotJoystick 		RIGHT_JOYSTICK 		 = new RobotJoystick(RobotMap.RIGHT_JOYSTICK);
 	
 	// SUBSYSTEMS
-	public static final DriveSystem 		DRIVE_SYSTEM 		= new DriveSystem();
-	public static final Pneumatics			PNEUMATICS			= new Pneumatics();
-	public static final ArmSystem			ARM_SYSTEM			= new ArmSystem();
-	public static final ClimberSystem		CLIMBER_SYSTEM		= new ClimberSystem();
-	public static final LEDSubsystem		LEDS_SUBSYSTEM		= new LEDSubsystem();
+	public static final DriveSystem 		DRIVE_SYSTEM 		 = new DriveSystem();
+	public static final Pneumatics			PNEUMATICS			 = new Pneumatics();
+	public static final ArmSystem			ARM_SYSTEM			 = new ArmSystem();
+	public static final ClimberSystem		CLIMBER_SYSTEM		 = new ClimberSystem();
+	public static final LEDSubsystem		LEDS_SUBSYSTEM		 = new LEDSubsystem();
 	
-	// COMMANDS
-	public static final TeleOPDrive 		TELE_OP_DRIVE 		= new TeleOPDrive();
-	public static final StopCompressor		STOP_COMPRESSOR		= new StopCompressor();
-	public static final ToggleShifter		TOGGLE_SHIFTER		= new ToggleShifter(Robot.LEFT_JOYSTICK.getButton1());
-	public static final ClimberCommand      CLIMBER_COMMAND		= new ClimberCommand();
-	public static final LEDCommand			LED_COMMAND			= new LEDCommand();
+	// DRIVE
+	public static final TeleOPDrive 		TELE_OP_DRIVE 		 = new TeleOPDrive();
+	public static final ToggleShifter		TOGGLE_SHIFTER		 = new ToggleShifter(LEFT_JOYSTICK.getButton1());
+	// ARM
+	public static final ArmCommand			ARM_COMMAND			 = new ArmCommand(LEFT_JOYSTICK.getButton10(), LEFT_JOYSTICK.getButton12());
+	public static final ArmElevatorCommand	ELEVATOR_COMMAND	 = new ArmElevatorCommand(RIGHT_JOYSTICK.getButton5(), RIGHT_JOYSTICK.getButton3());
+	// CLIMBER
+	public static final ClimberCommand      CLIMBER_COMMAND		 = new ClimberCommand(RIGHT_JOYSTICK.getButton6(), RIGHT_JOYSTICK.getButton4());
+	// PNEUMATICS
+	public static final StopCompressor		STOP_COMPRESSOR		 = new StopCompressor();
+	// LEDs
+	public static final LEDCommand			LED_COMMAND			 = new LEDCommand();
+	// TESTING
+	public static final ToggleTestSolenoid	TOGGLE_TEST_SOLENOID = new ToggleTestSolenoid(RIGHT_JOYSTICK.getButton1());
+	
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -118,10 +130,11 @@ public class Robot extends TimedRobot {
 	 * operated period
 	 */
 	public void log() {
-		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
-    	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
-    	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
-    	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
+//		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
+//    	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
+//    	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
+//    	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
+		SmartDashboard.putNumber("Elevator Speed", Robot.ARM_SYSTEM.getElevatorSpeed());
 	}
 
 	/**
@@ -143,10 +156,15 @@ public class Robot extends TimedRobot {
 		
 		Scheduler.getInstance().add(TELE_OP_DRIVE);
 		Scheduler.getInstance().add(LED_COMMAND);
-		Robot.LEFT_JOYSTICK.button1WhenPressed(TOGGLE_SHIFTER);
-		Scheduler.getInstance().add(CLIMBER_COMMAND);
-		SmartDashboard.putData("Start Compressor", new StartCompressor());
+		Scheduler.getInstance().add(STOP_COMPRESSOR);
+//		Scheduler.getInstance().add(CLIMBER_COMMAND);
+//		Scheduler.getInstance().add(ARM_COMMAND);
+		Scheduler.getInstance().add(ELEVATOR_COMMAND);
 		
+		LEFT_JOYSTICK.button1WhenPressed(TOGGLE_SHIFTER);
+		RIGHT_JOYSTICK.button1WhenPressed(TOGGLE_TEST_SOLENOID);
+		
+		SmartDashboard.putData("Start Compressor", new StartCompressor());
 	}
 
 	/**

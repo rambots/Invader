@@ -15,7 +15,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ClimberSystem extends Subsystem {
 	private WPI_TalonSRX climberMotor;
-	private final static double MOTOR_SPEED = 0.3;
+	private final static double UP_SPEED   =  0.9,
+								DOWN_SPEED = -0.9;
 	
 	public ClimberSystem() {
 		this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_MOTOR);
@@ -30,11 +31,11 @@ public class ClimberSystem extends Subsystem {
 	}
 	
 	public void goUp() {
-		climberMotor.set(MOTOR_SPEED);
+		climberMotor.set(UP_SPEED);
 	}
 	
 	public void goDown() {
-		climberMotor.set(-MOTOR_SPEED);
+		climberMotor.set(DOWN_SPEED);
 	}
 	
 	public void stop() {

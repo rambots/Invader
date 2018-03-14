@@ -27,7 +27,5 @@ public class StartCompressor extends Command {
     	Robot.PNEUMATICS.stopCompressor();
     }
 
-    protected void interrupted() {
-    	Robot.PNEUMATICS.stopCompressor();
-    }
+    protected void interrupted() {}
 }
