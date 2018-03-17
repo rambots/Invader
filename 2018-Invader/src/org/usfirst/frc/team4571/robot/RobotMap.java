@@ -20,10 +20,10 @@ public class RobotMap {
 							RIGHT_JOYSTICK = 1;
 	
 	/** Drive system motor channels */
-	public static final int TOP_LEFT_MOTOR 	   = 8,
-							BOTTOM_LEFT_MOTOR  = 9,
-							TOP_RIGHT_MOTOR	   = 2,
-							BOTTOM_RIGHT_MOTOR = 3;
+	public static final int TOP_LEFT_MOTOR 	   = 6,
+							BOTTOM_LEFT_MOTOR  = 7,
+							TOP_RIGHT_MOTOR	   = 1,
+							BOTTOM_RIGHT_MOTOR = 2;
 	
 	/** Pneumatic component channels */
 	public static final int COMPRESSOR_MODULE 		 	 = 0,
@@ -33,14 +33,14 @@ public class RobotMap {
 							TEST_SOLENOID_REVERSE		 = 3;
 	
 	/** Arm system motor channels */
-	public static final int LEFT_ARM_MOTOR     = 4,
+	public static final int LEFT_ARM_MOTOR     = 10,
 							RIGHT_ARM_MOTOR    = 5,
-							ELEVATOR_MOTOR	   = 1,
-							LEFT_PULLEY_MOTOR  = 6,
-							RIGHT_PULLEY_MOTOR = 7;
+							ELEVATOR_MOTOR	   = 8,
+							LEFT_PULLEY_MOTOR  = 3,
+							RIGHT_PULLEY_MOTOR = 4;
 	
 	/** Climber system motor channels */
-	public static final int CLIMBER_MOTOR = 10;
+	public static final int CLIMBER_MOTOR = 9;
 	
 	/** REV Blinkin PWM channel */
 	public static final int REV_BLINKIN_CHANNEL = 0;

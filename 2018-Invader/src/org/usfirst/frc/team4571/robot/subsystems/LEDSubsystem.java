@@ -184,7 +184,7 @@ public class LEDSubsystem extends Subsystem {
 	 * - Speed			<br>
 	 * - Brightness		  
 	 */
-	public void sinelonOceanPalette() {
+	public void sinelonOcean() {
 		setPatternValues(1125, -0.75);
 	}
 	
@@ -196,7 +196,7 @@ public class LEDSubsystem extends Subsystem {
 	 * - Speed			<br>
 	 * - Brightness		  
 	 */
-	public void sinelonLavaPalette() {
+	public void sinelonLava() {
 		setPatternValues(1135, -0.73);
 	}
 	
@@ -208,7 +208,7 @@ public class LEDSubsystem extends Subsystem {
 	 * - Speed			<br>
 	 * - Brightness		  
 	 */
-	public void sinelonForestPalette() {
+	public void sinelonForest() {
 		setPatternValues(1145, -0.71);
 	}
 	
@@ -220,12 +220,124 @@ public class LEDSubsystem extends Subsystem {
 	 * - Speed			<br>
 	 * - Brightness		  
 	 */
-	public void BeatsPerMinuteRainbowPalette() {
+	public void beatsPerMinuteRainbow() {
 		setPatternValues(1155, -0.69);
 	}
 	
+	/**
+	 * <h1>Beats per Minute, Party Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Pattern Density<br>
+	 * - Speed			<br>
+	 * - Brightness		  
+	 */
+	public void beatsPerMinuteParty() {
+		setPatternValues(1165, -0.67);
+	}
+	
+	/**
+	 * <h1>Beats per Minute, Ocean Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Pattern Density<br>
+	 * - Speed			<br>
+	 * - Brightness		  
+	 */
+	public void beatsPerMinuteOcean() {
+		setPatternValues(1175, -0.65);
+	}
+	
+	/**
+	 * <h1>Beats per Minute, Lava Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Pattern Density<br>
+	 * - Speed			<br>
+	 * - Brightness		  
+	 */
+	public void beatsPerMinuteLava() {
+		setPatternValues(1185, -0.63);
+	}
+	
+	/**
+	 * <h1>Fire, Medium</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
 	public void fireMedium() {
 		setPatternValues(1205, -0.59);
+	}
+	
+	/**
+	 * <h1>Fire, Medium</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void fireLarge() {
+		setPatternValues(1215, -0.57);
+	}
+	
+	/**
+	 * <h1>Twinkles, Rainbow Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void twinklesRainbow() {
+		setPatternValues(1225, -0.55);
+	}
+	
+	/**
+	 * <h1>Twinkles, Party Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void twinklesParty() {
+		setPatternValues(1235, -0.53);
+	}
+	
+	/**
+	 * <h1>Twinkles, Ocean Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void twinklesOcean() {
+		setPatternValues(1245, -0.51);
+	}
+	
+	/**
+	 * <h1>Twinkles, Lava Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void twinklesLava() {
+		setPatternValues(1255, -0.49);
+	}
+	
+	/**
+	 * <h1>Twinkles, Forest Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void twinklesForest() {
+		setPatternValues(1265, -0.47);
+	}
+	
+	/**
+	 * <h1>Color Waves, Rainbow Palette</h1>
+	 * This is a fixed palette pattern.
+	 * <h1>Adjustments:</h1>
+	 * - Brightness		  
+	 */
+	public void colorWavesRainbow() {
+		setPatternValues(1275, -0.45);
 	}
 	
 	public void heartbeatGray() {

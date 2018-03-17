@@ -41,4 +41,8 @@ public class ClimberSystem extends Subsystem {
 	public void stop() {
 		climberMotor.set(0.0);
 	}
+	
+	public double getClimberSpeed() {
+		return climberMotor.get();
+	}
 }

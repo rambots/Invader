@@ -13,19 +13,17 @@ public class LEDCommand extends Command {
     	requires(Robot.LEDS_SUBSYSTEM);
     }
 
-    protected void initialize() {
-    }
+    protected void initialize() {}
 
     protected void execute() {
-    	Robot.LEDS_SUBSYSTEM.rainbowPartyPalette();
+    	Robot.LEDS_SUBSYSTEM.rainbow();
     }
 
     protected boolean isFinished() {
         return false;
     }
 
-    protected void end() {
-    }
+    protected void end() {}
 
     protected void interrupted() {
     }

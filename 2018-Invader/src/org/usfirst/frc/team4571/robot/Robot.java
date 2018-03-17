@@ -122,7 +122,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
-		Scheduler.getInstance().add(STOP_COMPRESSOR);
+//		Scheduler.getInstance().add(STOP_COMPRESSOR);
 	}
 	
 	/**
@@ -130,11 +130,15 @@ public class Robot extends TimedRobot {
 	 * operated period
 	 */
 	public void log() {
-//		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
-//    	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
-//    	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
-//    	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
-		SmartDashboard.putNumber("Elevator Speed", Robot.ARM_SYSTEM.getElevatorSpeed());
+		// Transmission Motors
+		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
+    	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
+    	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
+    	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
+    	// Elevator Motor
+		SmartDashboard.putNumber("Elevator Motor Speed", Robot.ARM_SYSTEM.getElevatorSpeed());
+		// Climber Motor
+		SmartDashboard.putNumber("Climber Motor Speed", Robot.CLIMBER_SYSTEM.getClimberSpeed());
 	}
 
 	/**
@@ -156,8 +160,8 @@ public class Robot extends TimedRobot {
 		
 		Scheduler.getInstance().add(TELE_OP_DRIVE);
 		Scheduler.getInstance().add(LED_COMMAND);
-		Scheduler.getInstance().add(STOP_COMPRESSOR);
-//		Scheduler.getInstance().add(CLIMBER_COMMAND);
+//		Scheduler.getInstance().add(STOP_COMPRESSOR);
+		Scheduler.getInstance().add(CLIMBER_COMMAND);
 //		Scheduler.getInstance().add(ARM_COMMAND);
 		Scheduler.getInstance().add(ELEVATOR_COMMAND);
 		
