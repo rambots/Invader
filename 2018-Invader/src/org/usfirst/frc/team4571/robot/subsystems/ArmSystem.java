@@ -18,39 +18,35 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author Mahim
  */
 public class ArmSystem extends Subsystem {
-	WPI_TalonSRX  leftPulleyMotor,
-				  rightPulleyMotor,
+	WPI_TalonSRX  pulleyMotor,
 				  elevatorMotor;
 	WPI_VictorSPX leftArmMotor,
 				  rightArmMotor;
 	
 	private static final double INTAKE_SPEED  = -0.5,
 								OUTTAKE_SPEED =  0.5,
-								UP_SPEED	  =  0.9,
-								DOWN_SPEED	  = -0.9;
+								UP_SPEED	  =  0.5,
+								DOWN_SPEED	  = -0.5;
 	
 	public ArmSystem() {
 		this.leftArmMotor     = new WPI_VictorSPX(RobotMap.LEFT_ARM_MOTOR);
 		this.rightArmMotor 	  = new WPI_VictorSPX(RobotMap.RIGHT_ARM_MOTOR);
 		this.elevatorMotor	  = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR);
-		this.leftPulleyMotor  = new WPI_TalonSRX(RobotMap.LEFT_PULLEY_MOTOR);
-		this.rightPulleyMotor = new WPI_TalonSRX(RobotMap.RIGHT_PULLEY_MOTOR);
+		this.pulleyMotor      = new WPI_TalonSRX(RobotMap.LEFT_PULLEY_MOTOR);
 		
 		//TODO: figure out if these should be actually inverted or not
 		this.leftArmMotor.setInverted(true); 
-		this.leftPulleyMotor.setInverted(true);
+		this.pulleyMotor.setInverted(true);
 		this.elevatorMotor.setInverted(true);
 		
-		this.leftArmMotor.setExpiration(0.1);
-		this.rightArmMotor.setExpiration(0.1);
-		this.leftPulleyMotor.setExpiration(0.1);
-		this.rightPulleyMotor.setExpiration(0.1);
+//		this.leftArmMotor.setExpiration(0.1);
+//		this.rightArmMotor.setExpiration(0.1);
+		this.pulleyMotor.setExpiration(0.1);
 		this.elevatorMotor.setExpiration(0.1);
 		
-		this.leftArmMotor.setSafetyEnabled(false);
-		this.rightArmMotor.setSafetyEnabled(false);
-		this.leftPulleyMotor.setSafetyEnabled(false);
-		this.rightPulleyMotor.setSafetyEnabled(false);
+//		this.leftArmMotor.setSafetyEnabled(false);
+//		this.rightArmMotor.setSafetyEnabled(false);
+		this.pulleyMotor.setSafetyEnabled(false);
 		this.elevatorMotor.setSafetyEnabled(false);
 	}
 
@@ -62,8 +58,7 @@ public class ArmSystem extends Subsystem {
     }
     
     public void setPulleyMotor(double power) {
-    	this.leftPulleyMotor.set(power);
-    	this.rightPulleyMotor.set(power);
+    	this.pulleyMotor.set(power);
     }
     
     public void startIntake() {
@@ -89,8 +84,20 @@ public class ArmSystem extends Subsystem {
     	elevatorMotor.set(0.0);
     }
     
+    public void setElevatorMotor(double speed) {
+    	elevatorMotor.set(speed);
+    }
+    
     public double getElevatorSpeed() {
     	return elevatorMotor.get();
+    }
+    
+    public double getLeftArmSpeed() {
+    	return leftArmMotor.get();
+    }
+    
+    public double getRightArmSpeed() {
+    	return rightArmMotor.get();
     }
 }
 

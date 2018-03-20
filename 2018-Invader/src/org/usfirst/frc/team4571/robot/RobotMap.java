@@ -17,7 +17,8 @@ public class RobotMap {
 	
 	/** Joystick ports */
 	public static final int LEFT_JOYSTICK  = 0,
-							RIGHT_JOYSTICK = 1;
+							RIGHT_JOYSTICK = 1,
+							GAMEPAD		   = 2;
 	
 	/** Drive system motor channels */
 	public static final int TOP_LEFT_MOTOR 	   = 6,
@@ -36,8 +37,7 @@ public class RobotMap {
 	public static final int LEFT_ARM_MOTOR     = 10,
 							RIGHT_ARM_MOTOR    = 5,
 							ELEVATOR_MOTOR	   = 8,
-							LEFT_PULLEY_MOTOR  = 3,
-							RIGHT_PULLEY_MOTOR = 4;
+							LEFT_PULLEY_MOTOR  = 3;
 	
 	/** Climber system motor channels */
 	public static final int CLIMBER_MOTOR = 9;

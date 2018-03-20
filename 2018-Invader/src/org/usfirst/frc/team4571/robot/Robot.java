@@ -40,8 +40,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	
 	// JOYSTICKS
-	public static final RobotJoystick 		LEFT_JOYSTICK 		 = new RobotJoystick(RobotMap.LEFT_JOYSTICK);
-	public static final RobotJoystick 		RIGHT_JOYSTICK 		 = new RobotJoystick(RobotMap.RIGHT_JOYSTICK);
+	public static final LogitechExtreme3DPro LEFT_JOYSTICK 		 = new LogitechExtreme3DPro(RobotMap.LEFT_JOYSTICK);
+	public static final LogitechExtreme3DPro RIGHT_JOYSTICK 	 = new LogitechExtreme3DPro(RobotMap.RIGHT_JOYSTICK);
+	public static final Gamepad				 GAMEPAD			 = new Gamepad(RobotMap.GAMEPAD);
 	
 	// SUBSYSTEMS
 	public static final DriveSystem 		DRIVE_SYSTEM 		 = new DriveSystem();
@@ -54,10 +55,10 @@ public class Robot extends TimedRobot {
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		 = new TeleOPDrive();
 	public static final ToggleShifter		TOGGLE_SHIFTER		 = new ToggleShifter(LEFT_JOYSTICK.getButton1());
 	// ARM
-	public static final ArmCommand			ARM_COMMAND			 = new ArmCommand(LEFT_JOYSTICK.getButton10(), LEFT_JOYSTICK.getButton12());
-	public static final ArmElevatorCommand	ELEVATOR_COMMAND	 = new ArmElevatorCommand(RIGHT_JOYSTICK.getButton5(), RIGHT_JOYSTICK.getButton3());
+	public static final ArmCommand			ARM_COMMAND			 = new ArmCommand();
+	public static final ArmElevatorCommand	ELEVATOR_COMMAND	 = new ArmElevatorCommand();
 	// CLIMBER
-	public static final ClimberCommand      CLIMBER_COMMAND		 = new ClimberCommand(RIGHT_JOYSTICK.getButton6(), RIGHT_JOYSTICK.getButton4());
+	public static final ClimberCommand		CLIMBER_COMMAND      = new ClimberCommand();
 	// PNEUMATICS
 	public static final StopCompressor		STOP_COMPRESSOR		 = new StopCompressor();
 	// LEDs
@@ -112,10 +113,16 @@ public class Robot extends TimedRobot {
 		m_autonomousCommand = autoChooser.getSelected();
 
 		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
+		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
+		 * switch(autoSelected) { 
+		 * case "My Auto": 
+		 * autonomousCommand = new MyAutoCommand(); 
+		 * break; 
+		 * case "Default Auto": 
+		 * default:
+		 * autonomousCommand = new ExampleCommand();
+		 * break; 
+		 * }
 		 */
 
 		// schedule the autonomous command (example)
@@ -135,10 +142,12 @@ public class Robot extends TimedRobot {
     	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
     	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
     	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
-    	// Elevator Motor
-		SmartDashboard.putNumber("Elevator Motor Speed", Robot.ARM_SYSTEM.getElevatorSpeed());
+    	// Arm Motors
+		SmartDashboard.putNumber("Elevator Motor Speed", ARM_SYSTEM.getElevatorSpeed());
+		SmartDashboard.putNumber("left arm speed", ARM_SYSTEM.getLeftArmSpeed());
+		SmartDashboard.putNumber("right arm speed", ARM_SYSTEM.getRightArmSpeed());
 		// Climber Motor
-		SmartDashboard.putNumber("Climber Motor Speed", Robot.CLIMBER_SYSTEM.getClimberSpeed());
+		SmartDashboard.putNumber("Climber Motor Speed", CLIMBER_SYSTEM.getClimberSpeed());
 	}
 
 	/**
@@ -162,7 +171,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().add(LED_COMMAND);
 //		Scheduler.getInstance().add(STOP_COMPRESSOR);
 		Scheduler.getInstance().add(CLIMBER_COMMAND);
-//		Scheduler.getInstance().add(ARM_COMMAND);
+		Scheduler.getInstance().add(ARM_COMMAND);
 		Scheduler.getInstance().add(ELEVATOR_COMMAND);
 		
 		LEFT_JOYSTICK.button1WhenPressed(TOGGLE_SHIFTER);

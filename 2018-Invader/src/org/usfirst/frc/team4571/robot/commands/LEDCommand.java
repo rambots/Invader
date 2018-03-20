@@ -16,7 +16,7 @@ public class LEDCommand extends Command {
     protected void initialize() {}
 
     protected void execute() {
-    	Robot.LEDS_SUBSYSTEM.rainbow();
+    	Robot.LEDS_SUBSYSTEM.shotBlue();
     }
 
     protected boolean isFinished() {

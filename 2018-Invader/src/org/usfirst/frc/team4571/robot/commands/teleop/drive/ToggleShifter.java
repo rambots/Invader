@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4571.robot.commands.teleop.drive;
 
 import org.usfirst.frc.team4571.robot.Robot;
-import org.usfirst.frc.team4571.robot.RobotJoystick;
+import org.usfirst.frc.team4571.robot.LogitechExtreme3DPro;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * <p>
  * This command will only work if it is assigned to execute when a button 
  * is pressed, please check this method how to assign it
- * {@link RobotJoystick#button1WhenPressed(Command)}. Make sure it is the same
+ * {@link LogitechExtreme3DPro#button1WhenPressed(Command)}. Make sure it is the same
  * button that is used when instantiating the class.
  * 
  * @author Mahim

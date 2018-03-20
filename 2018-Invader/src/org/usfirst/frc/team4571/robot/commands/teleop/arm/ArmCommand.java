@@ -2,7 +2,6 @@ package org.usfirst.frc.team4571.robot.commands.teleop.arm;
 
 import org.usfirst.frc.team4571.robot.Robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -13,30 +12,26 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Mahim
  */
 public class ArmCommand extends Command {
-	private Button button1,
-				   button2;
 
-    public ArmCommand(Button button1, Button button2) {
+    public ArmCommand() {
     	requires(Robot.ARM_SYSTEM);
-    	this.button1 = button1;
-    	this.button2 = button2;
     }
 
     protected void initialize() {
-    	Robot.ARM_SYSTEM.stop();
     }
 
     protected void execute() {
-    	if (button1.get()) {
-    		Robot.ARM_SYSTEM.startIntake();
-    	} else {
-    		Robot.ARM_SYSTEM.stop();
-    	}
-    	if (button2.get()) {
-    		Robot.ARM_SYSTEM.startOuttake();
-    	} else {
-    		Robot.ARM_SYSTEM.stop();
-    	}
+//    	double rightTrigger = Robot.GAMEPAD.getRightTrigger();
+//    	double leftTrigger  = Robot.GAMEPAD.getLeftTrigger();
+//    	
+//    	if (rightTrigger > 0 && rightTrigger > leftTrigger) {
+//    		Robot.ARM_SYSTEM.setArmMotors(rightTrigger);
+//    	} else if (leftTrigger > 0 && leftTrigger > rightTrigger) {
+//    		Robot.ARM_SYSTEM.setArmMotors(leftTrigger);
+//    	} else {
+//    		Robot.ARM_SYSTEM.stop();
+//    	}
+    	Robot.ARM_SYSTEM.setArmMotors(Robot.GAMEPAD.getLeftYAxis());
     }
 
     protected boolean isFinished() {
