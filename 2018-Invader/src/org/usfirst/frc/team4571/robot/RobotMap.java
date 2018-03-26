@@ -21,27 +21,29 @@ public class RobotMap {
 							GAMEPAD		   = 2;
 	
 	/** Drive system motor channels */
-	public static final int TOP_LEFT_MOTOR 	   = 6,
-							BOTTOM_LEFT_MOTOR  = 7,
-							TOP_RIGHT_MOTOR	   = 1,
-							BOTTOM_RIGHT_MOTOR = 2;
+	public static final int TOP_LEFT_MOTOR 	   = 9,
+							BOTTOM_LEFT_MOTOR  = 6,
+							TOP_RIGHT_MOTOR	   = 7,
+							BOTTOM_RIGHT_MOTOR = 8;
 	
 	/** Pneumatic component channels */
-	public static final int COMPRESSOR_MODULE 		 	 = 0,
-							TRANSMISSION_SHIFTER_FORWARD = 0,
-							TRANSMISSION_SHIFTER_REVERSE = 1,
-							TEST_SOLENOID_FORWARD 		 = 2,
-							TEST_SOLENOID_REVERSE		 = 3;
+//	public static final int COMPRESSOR_MODULE 		 	 = 0,
+//							TRANSMISSION_SHIFTER_FORWARD = 0,
+//							TRANSMISSION_SHIFTER_REVERSE = 1,
+//							TEST_SOLENOID_FORWARD 		 = 2,
+//							TEST_SOLENOID_REVERSE		 = 3;
 	
 	/** Arm system motor channels */
-	public static final int LEFT_ARM_MOTOR     = 10,
-							RIGHT_ARM_MOTOR    = 5,
-							ELEVATOR_MOTOR	   = 8,
-							LEFT_PULLEY_MOTOR  = 3;
+	public static final int LEFT_ARM_MOTOR  = 4,
+							RIGHT_ARM_MOTOR = 5,
+							ELEVATOR_MOTOR	= 1,
+							PULLEY_MOTOR    = 3;
 	
 	/** Climber system motor channels */
-	public static final int CLIMBER_MOTOR = 9;
+	public static final int CLIMBER_MOTOR = 2;
 	
 	/** REV Blinkin PWM channel */
 	public static final int REV_BLINKIN_CHANNEL = 0;
+	
+	public static final double pulleyDownTime = 2.4;
 }

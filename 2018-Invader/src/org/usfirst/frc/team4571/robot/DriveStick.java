@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class LogitechExtreme3DPro extends Joystick {
+public class DriveStick extends Joystick {
 	private Button 	button1,  button2,
 					button3,  button4,
 					button5,  button6,
@@ -13,7 +13,7 @@ public class LogitechExtreme3DPro extends Joystick {
 					button9,  button10,
 					button11, button12; 
 
-	public LogitechExtreme3DPro(int port) {
+	public DriveStick(int port) {
 		super(port);
 		this.button1  = new JoystickButton(this, 1);
 		this.button2  = new JoystickButton(this, 2);
@@ -30,7 +30,7 @@ public class LogitechExtreme3DPro extends Joystick {
 	}
 	
 	public double getYAxis() {
-		return this.getRawAxis(1);
+		return -this.getRawAxis(1);
 	}
 	
 	public double getXAxis() {
@@ -85,62 +85,62 @@ public class LogitechExtreme3DPro extends Joystick {
 		return this.button12;
 	}
 	
-	public LogitechExtreme3DPro button1WhenPressed(Command command) {
+	public DriveStick button1WhenPressed(Command command) {
 		this.button1.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button2WhenPressed(Command command) {
+	public DriveStick button2WhenPressed(Command command) {
 		this.button2.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button3WhenPressed(Command command) {
+	public DriveStick button3WhenPressed(Command command) {
 		this.button3.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button4WhenPressed(Command command) {
+	public DriveStick button4WhenPressed(Command command) {
 		this.button4.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button5WhenPressed(Command command) {
+	public DriveStick button5WhenPressed(Command command) {
 		this.button5.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button6WhenPressed(Command command) {
+	public DriveStick button6WhenPressed(Command command) {
 		this.button6.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button7WhenPressed(Command command) {
+	public DriveStick button7WhenPressed(Command command) {
 		this.button7.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button8WhenPressed(Command command) {
+	public DriveStick button8WhenPressed(Command command) {
 		this.button8.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button9WhenPressed(Command command) {
+	public DriveStick button9WhenPressed(Command command) {
 		this.button9.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button10WhenPressed(Command command) {
+	public DriveStick button10WhenPressed(Command command) {
 		this.button10.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button11WhenPressed(Command command) {
+	public DriveStick button11WhenPressed(Command command) {
 		this.button11.whenPressed(command);
 		return this;
 	}
 	
-	public LogitechExtreme3DPro button12WhenPressed(Command command) {
+	public DriveStick button12WhenPressed(Command command) {
 		this.button12.whenPressed(command);
 		return this;
 	}

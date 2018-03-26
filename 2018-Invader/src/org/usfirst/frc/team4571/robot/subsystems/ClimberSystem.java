@@ -20,7 +20,7 @@ public class ClimberSystem extends Subsystem {
 	
 	public ClimberSystem() {
 		this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_MOTOR);
-		this.climberMotor.setExpiration(0.1);
+		this.climberMotor.setExpiration(0.2);
 		this.climberMotor.setSafetyEnabled(false);
 	}
 	

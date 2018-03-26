@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Mahim
  */
 public class Gamepad extends Joystick {
-	private Button aButton, bButton,
-				   xButton, yButton,
+	private Button a, b, x, y,
 				   leftBumperButton,
 				   rightBumperButton,
 				   backButton,
@@ -22,10 +21,10 @@ public class Gamepad extends Joystick {
 
 	public Gamepad(int port) {
 		super(port);
-		this.aButton = new JoystickButton(this, 1);
-		this.bButton = new JoystickButton(this, 2);
-		this.xButton = new JoystickButton(this, 3);
-		this.yButton = new JoystickButton(this, 4);
+		this.a = new JoystickButton(this, 1);
+		this.b = new JoystickButton(this, 2);
+		this.x = new JoystickButton(this, 3);
+		this.y = new JoystickButton(this, 4);
 		
 		this.leftBumperButton  = new JoystickButton(this, 5);
 		this.rightBumperButton = new JoystickButton(this, 6);
@@ -42,7 +41,7 @@ public class Gamepad extends Joystick {
 	}
 	
 	public double getLeftYAxis() {
-		return -this.getRawAxis(1); // negative because if it is pushed forward it returns a negative value
+		return -this.getRawAxis(1); // negative because controls are reversed
 	}
 	
 	public double getRightXAxis() {
@@ -50,7 +49,7 @@ public class Gamepad extends Joystick {
 	}
 	
 	public double getRightYAxis() {
-		return -this.getRawAxis(5); // negative because if it is pushed forward it returns a negative value
+		return -this.getRawAxis(5); // negative because controls are reversed
 	}
 	
 	public double getLeftTrigger() {
@@ -62,19 +61,19 @@ public class Gamepad extends Joystick {
 	}
 	
 	public Button getButtonA() {
-		return this.aButton;
+		return this.a;
 	}
 	
 	public Button getButtonB() {
-		return this.bButton;
+		return this.b;
 	}
 	
 	public Button getButtonX() {
-		return this.xButton;
+		return this.x;
 	}
 	
 	public Button getButtonY() {
-		return this.yButton;
+		return this.y;
 	}
 	
 	public Button getLeftBumper() {
@@ -101,23 +100,39 @@ public class Gamepad extends Joystick {
 		return this.rightStickButton;
 	}
 	
+	public boolean isDPadPressedUp() {
+		if(this.getPOV() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isDPadPressedDown() {
+		if(this.getPOV() == 180) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	 
 	public Gamepad buttonAWhenPressed(Command command) {
-		aButton.whenPressed(command);
+		a.whenPressed(command);
 		return this;
 	}
 	
 	public Gamepad buttonBWhenPressed(Command command) {
-		bButton.whenPressed(command);
+		b.whenPressed(command);
 		return this;
 	}
 	
 	public Gamepad buttonXWhenPressed(Command command) {
-		xButton.whenPressed(command);
+		x.whenPressed(command);
 		return this;
 	}
 	
 	public Gamepad buttonYWhenPressed(Command command) {
-		yButton.whenPressed(command);
+		y.whenPressed(command);
 		return this;
 	}
 	

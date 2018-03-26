@@ -3,6 +3,7 @@ package org.usfirst.frc.team4571.robot.commands.teleop.arm;
 import org.usfirst.frc.team4571.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This command controls the wheels of the arms, it will spin when a button
@@ -21,17 +22,18 @@ public class ArmCommand extends Command {
     }
 
     protected void execute() {
-//    	double rightTrigger = Robot.GAMEPAD.getRightTrigger();
-//    	double leftTrigger  = Robot.GAMEPAD.getLeftTrigger();
-//    	
-//    	if (rightTrigger > 0 && rightTrigger > leftTrigger) {
-//    		Robot.ARM_SYSTEM.setArmMotors(rightTrigger);
-//    	} else if (leftTrigger > 0 && leftTrigger > rightTrigger) {
-//    		Robot.ARM_SYSTEM.setArmMotors(leftTrigger);
-//    	} else {
-//    		Robot.ARM_SYSTEM.stop();
-//    	}
-    	Robot.ARM_SYSTEM.setArmMotors(Robot.GAMEPAD.getLeftYAxis());
+    	double rightTrigger = Robot.GAMEPAD.getRightTrigger();
+    	double leftTrigger  = Robot.GAMEPAD.getLeftTrigger();
+    	
+    	if (rightTrigger > 0 && rightTrigger > leftTrigger) {
+    		Robot.ARM_SYSTEM.setArmMotors(rightTrigger);
+    	} else if (leftTrigger > 0 && leftTrigger > rightTrigger) {
+    		Robot.ARM_SYSTEM.setArmMotors(-leftTrigger);
+    	} else {
+    		Robot.ARM_SYSTEM.stop();
+    	}
+    	SmartDashboard.putBoolean("is right trigger pressed", rightTrigger > 0 && rightTrigger > leftTrigger);
+    	SmartDashboard.putBoolean("is left trigger pressed", leftTrigger > 0 && leftTrigger > rightTrigger);
     }
 
     protected boolean isFinished() {

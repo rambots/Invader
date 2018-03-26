@@ -7,23 +7,18 @@
 
 package org.usfirst.frc.team4571.robot;
 
-import org.usfirst.frc.team4571.robot.commands.LEDCommand;
-import org.usfirst.frc.team4571.robot.commands.StartCompressor;
-import org.usfirst.frc.team4571.robot.commands.StopCompressor;
+import org.usfirst.frc.team4571.robot.commands.PulleyCommand;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
 import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmElevatorCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.ElevatorCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.climber.ClimberCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.drive.TeleOPDrive;
-import org.usfirst.frc.team4571.robot.commands.teleop.drive.ToggleShifter;
-import org.usfirst.frc.team4571.robot.commands.teleop.testing.ToggleTestSolenoid;
 import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
 import org.usfirst.frc.team4571.robot.subsystems.ClimberSystem;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
-import org.usfirst.frc.team4571.robot.subsystems.LEDSubsystem;
-import org.usfirst.frc.team4571.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team4571.robot.subsystems.Elevator;
+import org.usfirst.frc.team4571.robot.subsystems.PulleySystem;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -40,33 +35,28 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	
 	// JOYSTICKS
-	public static final LogitechExtreme3DPro LEFT_JOYSTICK 		 = new LogitechExtreme3DPro(RobotMap.LEFT_JOYSTICK);
-	public static final LogitechExtreme3DPro RIGHT_JOYSTICK 	 = new LogitechExtreme3DPro(RobotMap.RIGHT_JOYSTICK);
-	public static final Gamepad				 GAMEPAD			 = new Gamepad(RobotMap.GAMEPAD);
+	public static final DriveStick 	    	LEFT_DRIVE_STICK 	 = new DriveStick(RobotMap.LEFT_JOYSTICK);
+	public static final DriveStick 	    	RIGHT_DRIVE_STICK 	 = new DriveStick(RobotMap.RIGHT_JOYSTICK);
+	public static final Gamepad				GAMEPAD			 	 = new Gamepad(RobotMap.GAMEPAD);
 	
 	// SUBSYSTEMS
+	public static final Elevator			ELEVATOR			 = new Elevator();
 	public static final DriveSystem 		DRIVE_SYSTEM 		 = new DriveSystem();
-	public static final Pneumatics			PNEUMATICS			 = new Pneumatics();
 	public static final ArmSystem			ARM_SYSTEM			 = new ArmSystem();
+	public static final PulleySystem		PULLEY_SYSTEM		 = new PulleySystem();
 	public static final ClimberSystem		CLIMBER_SYSTEM		 = new ClimberSystem();
-	public static final LEDSubsystem		LEDS_SUBSYSTEM		 = new LEDSubsystem();
 	
 	// DRIVE
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		 = new TeleOPDrive();
-	public static final ToggleShifter		TOGGLE_SHIFTER		 = new ToggleShifter(LEFT_JOYSTICK.getButton1());
+	
 	// ARM
 	public static final ArmCommand			ARM_COMMAND			 = new ArmCommand();
-	public static final ArmElevatorCommand	ELEVATOR_COMMAND	 = new ArmElevatorCommand();
+	public static final ElevatorCommand		ELEVATOR_COMMAND	 = new ElevatorCommand();
+	public static final PulleyCommand		PULLEY_COMMAND		 = new PulleyCommand();
+	
 	// CLIMBER
 	public static final ClimberCommand		CLIMBER_COMMAND      = new ClimberCommand();
-	// PNEUMATICS
-	public static final StopCompressor		STOP_COMPRESSOR		 = new StopCompressor();
-	// LEDs
-	public static final LEDCommand			LED_COMMAND			 = new LEDCommand();
-	// TESTING
-	public static final ToggleTestSolenoid	TOGGLE_TEST_SOLENOID = new ToggleTestSolenoid(RIGHT_JOYSTICK.getButton1());
 	
-
 	Command m_autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
 
@@ -76,10 +66,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		autoChooser.addDefault("Run Motors", new RunMotors(60*30, 0.4));
-		autoChooser.addObject("Run Motors Reversed", new RunMotors(60*30, -0.25));
+		autoChooser.addDefault("Cross Line", new RunMotors(4.5, 0.5));
+		autoChooser.addObject("run reversed", new RunMotors(3, -0.5));
 		SmartDashboard.putData("Auto mode", autoChooser);
-		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
@@ -89,7 +78,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		Scheduler.getInstance().add(STOP_COMPRESSOR);
+		DRIVE_SYSTEM.resetNavX();
 	}
 
 	@Override
@@ -111,7 +100,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = autoChooser.getSelected();
-
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 		 * switch(autoSelected) { 
@@ -129,7 +117,6 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
-//		Scheduler.getInstance().add(STOP_COMPRESSOR);
 	}
 	
 	/**
@@ -143,7 +130,7 @@ public class Robot extends TimedRobot {
     	SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
     	SmartDashboard.putNumber("bottom right speed", DRIVE_SYSTEM.getBottomRightMotorSpeed());
     	// Arm Motors
-		SmartDashboard.putNumber("Elevator Motor Speed", ARM_SYSTEM.getElevatorSpeed());
+		SmartDashboard.putNumber("Elevator Motor Speed", ELEVATOR.getElevatorSpeed());
 		SmartDashboard.putNumber("left arm speed", ARM_SYSTEM.getLeftArmSpeed());
 		SmartDashboard.putNumber("right arm speed", ARM_SYSTEM.getRightArmSpeed());
 		// Climber Motor
@@ -168,16 +155,10 @@ public class Robot extends TimedRobot {
 		}
 		
 		Scheduler.getInstance().add(TELE_OP_DRIVE);
-		Scheduler.getInstance().add(LED_COMMAND);
-//		Scheduler.getInstance().add(STOP_COMPRESSOR);
 		Scheduler.getInstance().add(CLIMBER_COMMAND);
 		Scheduler.getInstance().add(ARM_COMMAND);
 		Scheduler.getInstance().add(ELEVATOR_COMMAND);
-		
-		LEFT_JOYSTICK.button1WhenPressed(TOGGLE_SHIFTER);
-		RIGHT_JOYSTICK.button1WhenPressed(TOGGLE_TEST_SOLENOID);
-		
-		SmartDashboard.putData("Start Compressor", new StartCompressor());
+		Scheduler.getInstance().add(PULLEY_COMMAND);
 	}
 
 	/**

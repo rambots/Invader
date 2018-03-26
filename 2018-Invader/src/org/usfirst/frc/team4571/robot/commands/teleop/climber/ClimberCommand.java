@@ -18,7 +18,7 @@ public class ClimberCommand extends Command {
     protected void initialize() {}
 
     protected void execute() {
-//    	Robot.CLIMBER_SYSTEM.setPower(Robot.GAMEPAD.getLeftYAxis());
+    	Robot.CLIMBER_SYSTEM.setPower(Robot.GAMEPAD.getLeftYAxis());
     }
 
     protected boolean isFinished() {

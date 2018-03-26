@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * 
  * @author Mahim
  */
-public class ArmElevatorCommand extends Command {
+public class ElevatorCommand extends Command {
 
     /**
      * This command requires two buttons for it to operate.
@@ -17,14 +17,17 @@ public class ArmElevatorCommand extends Command {
      * @param upButton   This button controls the elevator going up.
      * @param downButton This button controls the elevator going down.
      */
-    public ArmElevatorCommand() {
-    	requires(Robot.ARM_SYSTEM);
+    public ElevatorCommand() {
+    	requires(Robot.ELEVATOR);
     }
 
-    protected void initialize() {}
-
+    protected void initialize() {
+    	System.out.println("Elevator command INITIALIZE");
+    }
+    
     protected void execute() {
-//    	Robot.ARM_SYSTEM.setElevatorMotor(Robot.GAMEPAD.getRightYAxis());
+    	Robot.ELEVATOR.setElevatorMotor(Robot.GAMEPAD.getRightYAxis());
+    	System.out.println(Robot.GAMEPAD.getRightYAxis());
     }
 
     protected boolean isFinished() {
@@ -32,7 +35,7 @@ public class ArmElevatorCommand extends Command {
     }
 
     protected void end() {
-    	Robot.ARM_SYSTEM.stopElevator();
+    	Robot.ELEVATOR.stopElevator();
     }
 
     protected void interrupted() {}

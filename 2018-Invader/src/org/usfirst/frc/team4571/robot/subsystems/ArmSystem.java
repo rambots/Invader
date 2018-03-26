@@ -1,10 +1,11 @@
 package org.usfirst.frc.team4571.robot.subsystems;
 
 import org.usfirst.frc.team4571.robot.RobotMap;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,47 +19,36 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author Mahim
  */
 public class ArmSystem extends Subsystem {
-	WPI_TalonSRX  pulleyMotor,
-				  elevatorMotor;
-	WPI_VictorSPX leftArmMotor,
-				  rightArmMotor;
+	WPI_TalonSRX  		 leftArmMotor,
+				   		 rightArmMotor;
+	SpeedControllerGroup armMotors;
 	
 	private static final double INTAKE_SPEED  = -0.5,
-								OUTTAKE_SPEED =  0.5,
-								UP_SPEED	  =  0.5,
-								DOWN_SPEED	  = -0.5;
+								OUTTAKE_SPEED =  0.5;
 	
 	public ArmSystem() {
-		this.leftArmMotor     = new WPI_VictorSPX(RobotMap.LEFT_ARM_MOTOR);
-		this.rightArmMotor 	  = new WPI_VictorSPX(RobotMap.RIGHT_ARM_MOTOR);
-		this.elevatorMotor	  = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR);
-		this.pulleyMotor      = new WPI_TalonSRX(RobotMap.LEFT_PULLEY_MOTOR);
+		this.leftArmMotor  = new WPI_TalonSRX(RobotMap.LEFT_ARM_MOTOR);
+		this.rightArmMotor = new WPI_TalonSRX(RobotMap.RIGHT_ARM_MOTOR);
 		
 		//TODO: figure out if these should be actually inverted or not
 		this.leftArmMotor.setInverted(true); 
-		this.pulleyMotor.setInverted(true);
-		this.elevatorMotor.setInverted(true);
 		
-//		this.leftArmMotor.setExpiration(0.1);
-//		this.rightArmMotor.setExpiration(0.1);
-		this.pulleyMotor.setExpiration(0.1);
-		this.elevatorMotor.setExpiration(0.1);
+		this.leftArmMotor.setExpiration(0.2);
+		this.rightArmMotor.setExpiration(0.2);
 		
-//		this.leftArmMotor.setSafetyEnabled(false);
-//		this.rightArmMotor.setSafetyEnabled(false);
-		this.pulleyMotor.setSafetyEnabled(false);
-		this.elevatorMotor.setSafetyEnabled(false);
+		this.leftArmMotor.setSafetyEnabled(false);
+		this.rightArmMotor.setSafetyEnabled(false);
+		
+		this.armMotors = new SpeedControllerGroup(leftArmMotor, rightArmMotor);
+		
 	}
 
-    public void initDefaultCommand() {}
-    
-    public void setArmMotors(double power) {
-    	this.leftArmMotor.set(power);
-    	this.rightArmMotor.set(power);
+    public void initDefaultCommand() {
+    	setDefaultCommand(new ArmCommand());
     }
     
-    public void setPulleyMotor(double power) {
-    	this.pulleyMotor.set(power);
+    public void setArmMotors(double power) {
+    	armMotors.set(power);
     }
     
     public void startIntake() {
@@ -71,25 +61,6 @@ public class ArmSystem extends Subsystem {
     
     public void startOuttake() {
     	setArmMotors(OUTTAKE_SPEED);
-    }
-    public void elevate() {
-    	elevatorMotor.set(UP_SPEED);
-    }
-    
-    public void descend() {
-    	elevatorMotor.set(DOWN_SPEED);
-    }
-    
-    public void stopElevator() {
-    	elevatorMotor.set(0.0);
-    }
-    
-    public void setElevatorMotor(double speed) {
-    	elevatorMotor.set(speed);
-    }
-    
-    public double getElevatorSpeed() {
-    	return elevatorMotor.get();
     }
     
     public double getLeftArmSpeed() {
