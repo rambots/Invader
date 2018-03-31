@@ -3,6 +3,7 @@ package org.usfirst.frc.team4571.robot.commands.teleop.arm;
 import org.usfirst.frc.team4571.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This command controls the arm elevator.
@@ -22,12 +23,12 @@ public class ElevatorCommand extends Command {
     }
 
     protected void initialize() {
-    	System.out.println("Elevator command INITIALIZE");
+    	Robot.ELEVATOR.resetEncoder();
     }
     
     protected void execute() {
     	Robot.ELEVATOR.setElevatorMotor(Robot.GAMEPAD.getRightYAxis());
-    	System.out.println(Robot.GAMEPAD.getRightYAxis());
+    	SmartDashboard.putNumber("Raw Elevator Encoder Tick", Robot.ELEVATOR.getRawEncoderTick());
     }
 
     protected boolean isFinished() {
@@ -36,6 +37,7 @@ public class ElevatorCommand extends Command {
 
     protected void end() {
     	Robot.ELEVATOR.stopElevator();
+    	Robot.ELEVATOR.resetEncoder();
     }
 
     protected void interrupted() {}

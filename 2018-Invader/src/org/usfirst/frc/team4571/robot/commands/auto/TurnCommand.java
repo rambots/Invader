@@ -17,6 +17,7 @@ public class TurnCommand extends Command {
     	Robot.DRIVE_SYSTEM.resetNavX();
     	Robot.DRIVE_SYSTEM.setAnglePIDParameter(angle);
     	SmartDashboard.putData("angle pid", Robot.DRIVE_SYSTEM.getTurnController());
+    	SmartDashboard.putNumber("angle", Robot.DRIVE_SYSTEM.getAngle());
     }
 
     protected void execute() {}
@@ -28,6 +29,7 @@ public class TurnCommand extends Command {
     protected void end() {
     	Robot.DRIVE_SYSTEM.stop();
     	Robot.DRIVE_SYSTEM.disablePID();
+    	Robot.DRIVE_SYSTEM.resetNavX();
     }
 
     protected void interrupted() {}

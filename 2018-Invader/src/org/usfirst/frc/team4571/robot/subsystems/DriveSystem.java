@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4571.robot.subsystems;
 
+import org.usfirst.frc.team4571.robot.Robot;
 import org.usfirst.frc.team4571.robot.RobotMap;
 import org.usfirst.frc.team4571.robot.subsystems.pid.TurnOutput;
 
@@ -30,11 +31,12 @@ public class DriveSystem extends Subsystem {
 							    bottomRightMotor;
 	private DifferentialDrive   differentialDrive;
 	private final AHRS		    navX;
+	
 	private final TurnOutput    turnOutput;
 	private final PIDController turnController;
-	private static final double rotate_K = 0.0,
+	private static final double rotate_K = 1.3,
 								rotate_I = 0.0,
-								rotate_D = 0.0;
+								rotate_D = 3.1;
 								
 	public DriveSystem() {
 		this.topLeftMotor 	  = new WPI_TalonSRX(RobotMap.TOP_LEFT_MOTOR);
@@ -42,10 +44,10 @@ public class DriveSystem extends Subsystem {
 		this.topRightMotor 	  = new WPI_TalonSRX(RobotMap.TOP_RIGHT_MOTOR);
 		this.bottomRightMotor = new WPI_TalonSRX(RobotMap.BOTTOM_RIGHT_MOTOR);
 		
-		this.topLeftMotor.setExpiration(0.1);
-		this.bottomLeftMotor.setExpiration(0.1);
-		this.topRightMotor.setExpiration(0.1);
-		this.bottomRightMotor.setExpiration(0.1);
+		this.topLeftMotor.setExpiration(Robot.DEFAULT_PERIOD);
+		this.bottomLeftMotor.setExpiration(Robot.DEFAULT_PERIOD);
+		this.topRightMotor.setExpiration(Robot.DEFAULT_PERIOD);
+		this.bottomRightMotor.setExpiration(Robot.DEFAULT_PERIOD);
 		
 		this.topLeftMotor.setSafetyEnabled(false);
 		this.bottomLeftMotor.setSafetyEnabled(false);
@@ -66,7 +68,7 @@ public class DriveSystem extends Subsystem {
 		SpeedControllerGroup rightMotors = new SpeedControllerGroup(topRightMotor, bottomRightMotor);
 		
 		this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
-		this.differentialDrive.setExpiration(0.1);
+		this.differentialDrive.setExpiration(Robot.DEFAULT_PERIOD);
 		this.differentialDrive.setSafetyEnabled(false);
 		
 		this.navX 		    = new AHRS(Port.kMXP);
@@ -75,20 +77,6 @@ public class DriveSystem extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {}
-	
-	public enum TransmissionState {
-		HighGear, LowGear;
-		
-		private TransmissionState transmissionState;
-		
-		public TransmissionState getTransmissionState() {
-			return transmissionState;
-		}
-
-		public void setTransmissionState(TransmissionState transmissionState) {
-			this.transmissionState = transmissionState;
-		}
-	}
 	
 	/**
 	 * This method is used to drive the robot. It can also be used to directly set

@@ -7,10 +7,11 @@
 
 package org.usfirst.frc.team4571.robot;
 
-import org.usfirst.frc.team4571.robot.commands.PulleyCommand;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
+import org.usfirst.frc.team4571.robot.commands.auto.TurnCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.arm.ElevatorCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.PulleyCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.climber.ClimberCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.drive.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
@@ -48,6 +49,7 @@ public class Robot extends TimedRobot {
 	
 	// DRIVE
 	public static final TeleOPDrive 		TELE_OP_DRIVE 		 = new TeleOPDrive();
+	public static final TurnCommand			TURN_RIGHT_90		 = new TurnCommand(90);
 	
 	// ARM
 	public static final ArmCommand			ARM_COMMAND			 = new ArmCommand();
@@ -60,25 +62,17 @@ public class Robot extends TimedRobot {
 	Command m_autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
-		autoChooser.addDefault("Cross Line", new RunMotors(4.5, 0.5));
+		autoChooser.addObject("Cross Line", new RunMotors(4.5, 0.5));
 		autoChooser.addObject("run reversed", new RunMotors(3, -0.5));
 		SmartDashboard.putData("Auto mode", autoChooser);
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
 		DRIVE_SYSTEM.resetNavX();
+		ELEVATOR.resetEncoder();
 	}
 
 	@Override
@@ -86,34 +80,10 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = autoChooser.getSelected();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected) { 
-		 * case "My Auto": 
-		 * autonomousCommand = new MyAutoCommand(); 
-		 * break; 
-		 * case "Default Auto": 
-		 * default:
-		 * autonomousCommand = new ExampleCommand();
-		 * break; 
-		 * }
-		 */
-
-		// schedule the autonomous command (example)
+		
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
@@ -137,12 +107,10 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Climber Motor Speed", CLIMBER_SYSTEM.getClimberSpeed());
 	}
 
-	/**
-	 * This function is called periodically during autonomous.
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("angle", DRIVE_SYSTEM.getAngle());
 	}
 
 	@Override
@@ -159,20 +127,15 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().add(ARM_COMMAND);
 		Scheduler.getInstance().add(ELEVATOR_COMMAND);
 		Scheduler.getInstance().add(PULLEY_COMMAND);
+//		LEFT_DRIVE_STICK.button1WhenPressed(TURN_90_DEGREES);
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		log();
 	}
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
 	@Override
 	public void testPeriodic() {
 	}

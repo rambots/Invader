@@ -12,7 +12,6 @@ public class TurnOutput implements PIDOutput {
 
 	@Override
 	public void pidWrite(double output) {
-		this.myRobot.tankDrive(-output, output);
+		this.myRobot.tankDrive(output, -output);
 	}
-
 }
