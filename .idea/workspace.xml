@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a51eee8-a9f4-48c1-841a-8092b5df5830" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/CTRE_Phoenix.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/CTRE_Phoenix.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/WPILib.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/WPILib.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/cscore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/cscore.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/navx_frc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/navx_frc.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/ntcore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/ntcore.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/opencv.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/opencv.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/jars/wpiutil.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/jars/wpiutil.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/DriveStick.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/DriveStick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/Gamepad.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/Gamepad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/Robot$Placement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/Robot$Placement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/Robot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/RobotMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/RobotMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchLeft.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchLeft.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchRight.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchRight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/RunMotors.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/RunMotors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorHeight.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorHeight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorTimed.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorTimed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/SetPulleyTimed.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/SetPulleyTimed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/TimedOuttake.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/TimedOuttake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/auto/TurnCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/auto/TurnCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/teleop/arm/ArmCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/teleop/arm/ArmCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/teleop/arm/ElevatorCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/teleop/arm/ElevatorCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/teleop/arm/PulleyCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/teleop/arm/PulleyCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/teleop/climber/ClimberCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/teleop/climber/ClimberCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/commands/teleop/drive/TeleOPDrive.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/commands/teleop/drive/TeleOPDrive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/ArmSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/ArmSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/Climber.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/Climber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/DriveSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/DriveSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/Elevator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/Elevator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/Pulley.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/Pulley.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorOutput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/build/org/usfirst/frc/team4571/robot/subsystems/pid/TurnOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team4571/robot/subsystems/pid/TurnOutput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/dist/FRCUserProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/FRCUserProgram.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/DriveStick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/DriveStick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/Gamepad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/Gamepad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/RobotMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/RobotMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/archive/LEDCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/archive/LEDCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/archive/StartCompressor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/archive/StartCompressor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/archive/StopCompressor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/archive/StopCompressor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/archive/ToggleShifter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/archive/ToggleShifter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/archive/ToggleTestSolenoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/archive/ToggleTestSolenoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/DriveStraightCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/DriveStraightCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchLeft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchLeft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchRight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/GetSwitchRight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/RunMotors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/RunMotors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorHeight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorHeight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorTimed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/SetElevatorTimed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/SetPulleyTimed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/SetPulleyTimed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/TimedOuttake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/TimedOuttake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/auto/TurnCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/auto/TurnCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/teleop/arm/ArmCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/teleop/arm/ArmCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/teleop/arm/ElevatorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/teleop/arm/ElevatorCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/teleop/arm/PulleyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/teleop/arm/PulleyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/teleop/climber/ClimberCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/teleop/climber/ClimberCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/commands/teleop/drive/TeleOPDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/commands/teleop/drive/TeleOPDrive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/ArmSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/ArmSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/Climber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/Climber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/DriveSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/DriveSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/Elevator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/Pulley.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/Pulley.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/archive/LEDSubsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/archive/LEDSubsystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/archive/Pneumatics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/archive/Pneumatics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/pid/ElevatorOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2018-Invader/src/org/usfirst/frc/team4571/robot/subsystems/pid/TurnOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/pid/TurnOutput.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/bin/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-30526936">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="2" />
+          <entry key="java" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="2" />
+          <entry key="JAVA" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.remote" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../ftc-2017" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/DriveSystem.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="166" />
+    <option name="y" value="23" />
+    <option name="width" value="1070" />
+    <option name="height" value="819" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Invader" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Invader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Invader" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/android-sdk" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538165424088" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a51eee8-a9f4-48c1-841a-8092b5df5830" name="Default Changelist" comment="" />
+      <created>1537590753827</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1537590753827</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="166" y="23" width="1070" height="819" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24953271" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="FRC" order="7" weight="0.32860824" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" visible="true" weight="0.3298969" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$USERLIBS_DIR$/java/lib/CTRE_Phoenix.jar!/com/ctre/phoenix/motorcontrol/can/WPI_TalonSRX.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USERLIBS_DIR$/java/lib/navx_frc.jar!/com/kauailabs/navx/frc/AHRS.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="148" column="11" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USERLIBS_DIR$/java/src/CTRE_Phoenix-sources.jar!/com/ctre/phoenix/motorcontrol/can/WPI_TalonSRX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USERLIBS_DIR$/java/src/com/kauailabs/navx/frc/AHRS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="297" column="11" selection-start-line="297" selection-start-column="11" selection-end-line="297" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/DriveSystem.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/pid/TurnOutput.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/Pneumatics.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/subsystems/PulleySystem.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/Gamepad.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/Robot.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team4571/robot/RobotMap.java" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>FRC</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>2018-Invader</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
