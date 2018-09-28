@@ -47,7 +47,7 @@ public class Elevator extends Subsystem {
     public void initDefaultCommand() {}
     
     /**
-     * converts the given heigt in inches to encoder ticks
+     * converts the given height in inches to encoder ticks
      * 
      * @param setpointInInches setpoint in inches
      */

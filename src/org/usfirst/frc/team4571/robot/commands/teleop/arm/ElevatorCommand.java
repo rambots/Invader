@@ -16,8 +16,12 @@ public class ElevatorCommand extends Command {
     }
     
     protected void execute() {
-    	Robot.ELEVATOR.setElevatorMotor(Robot.GAMEPAD.getRightYAxis());
     	SmartDashboard.putNumber("Raw Elevator Encoder Tick", Robot.ELEVATOR.getTick());
+    	if(Robot.ELEVATOR.isLimitSwitchPressed() && Robot.GAMEPAD.getRightYAxis() < 0) {
+    	    Robot.ELEVATOR.stopElevator();
+        } else {
+            Robot.ELEVATOR.setElevatorMotor(Robot.GAMEPAD.getRightYAxis());
+        }
     }
 
     protected boolean isFinished() {
