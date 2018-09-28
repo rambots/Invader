@@ -8,7 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class PulleySystem extends Subsystem {
+public class Pulley extends Subsystem {
 	private WPI_TalonSRX pulleyMotor;
 	private final static double UP_SPEED   =  0.5,
 							    DOWN_SPEED = -0.5;
@@ -16,7 +16,7 @@ public class PulleySystem extends Subsystem {
     public void initDefaultCommand() {
     }
     
-    public PulleySystem() {
+    public Pulley() {
     	this.pulleyMotor = new WPI_TalonSRX(RobotMap.PULLEY_MOTOR);
     	this.pulleyMotor.setExpiration(Robot.DEFAULT_PERIOD);
     	this.pulleyMotor.setSafetyEnabled(false);

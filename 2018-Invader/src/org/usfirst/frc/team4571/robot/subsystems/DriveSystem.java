@@ -14,16 +14,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-/**
- * This subsystem contains all the components of the drive system.
- * Such as:
- * 
- * <li> The motors for the transmissions
- * <li> The encoders
- * <li> A gyroscope
- * 
- * @author Mahim
- */
 public class DriveSystem extends Subsystem {
 	private WPI_TalonSRX 	    topLeftMotor,
 							    bottomLeftMotor,
@@ -34,9 +24,20 @@ public class DriveSystem extends Subsystem {
 	
 	private final TurnOutput    turnOutput;
 	private final PIDController turnController;
+	
+	/**
+	 * For rotating
+	 */
 	private static final double rotate_K = 1.3,
 								rotate_I = 0.0,
 								rotate_D = 3.1;
+	
+	/**
+	 * For maintaining steady angle
+	 */
+	private static final double tuning_K = 0,
+								tuning_I = 0,
+								tuning_D = 0;
 								
 	public DriveSystem() {
 		this.topLeftMotor 	  = new WPI_TalonSRX(RobotMap.TOP_LEFT_MOTOR);
@@ -72,21 +73,13 @@ public class DriveSystem extends Subsystem {
 		this.differentialDrive.setSafetyEnabled(false);
 		
 		this.navX 		    = new AHRS(Port.kMXP);
+		
 		this.turnOutput     = new TurnOutput(differentialDrive);
 		this.turnController = new PIDController(rotate_K, rotate_I, rotate_D, navX, turnOutput);
 	}
 	
 	public void initDefaultCommand() {}
 	
-	/**
-	 * This method is used to drive the robot. It can also be used to directly set
-	 * the power of the motors during autonomous if wanted.
-	 * 
-	 * @param left	The robot left side's speed along the X axis [-1.0..1.0]. Forward is
-	 *              positive.
-	 * @param right	The robot right side's speed along the X axis [-1.0..1.0]. Forward is
-	 *              positive.
-	 */
 	public void drive(double left, double right) {
 		this.differentialDrive.tankDrive(left, right);
 	}
@@ -119,7 +112,7 @@ public class DriveSystem extends Subsystem {
 		return this.navX.getAngle();
 	}
 	
-	public boolean isAngleOnTarget() {
+	public boolean isTurnAngleOnTarget() {
 		return this.turnController.onTarget();
 	}
 	
@@ -127,16 +120,25 @@ public class DriveSystem extends Subsystem {
 		return this.turnController;
 	}
 	
-	public void setAnglePIDParameter(double angleSetPoint) {
+	
+	/**
+	 * used for making big turns
+	 * 
+	 * @param angleSetPoint angle in degrees
+	 */
+	public void setTurnPIDParameter(double angleSetPoint) {
 		turnController.reset();	
 		turnController.setInputRange(-180.0f, 180.0f);
-		turnController.setOutputRange(-0.6, 0.6);
+		turnController.setOutputRange(-0.8, 0.8);
 		turnController.setSetpoint(angleSetPoint);
 		turnController.setAbsoluteTolerance(5.0f);
 		turnController.enable();
 	}
 	
-	public void disablePID() {
+	
+	
+	public void disableTurnPID() {
 		this.turnController.disable();
 	}
+	
 }

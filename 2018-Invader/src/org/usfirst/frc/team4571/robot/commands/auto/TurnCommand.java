@@ -15,22 +15,31 @@ public class TurnCommand extends Command {
 
     protected void initialize() {
     	Robot.DRIVE_SYSTEM.resetNavX();
-    	Robot.DRIVE_SYSTEM.setAnglePIDParameter(angle);
+    	Robot.DRIVE_SYSTEM.setTurnPIDParameter(angle);
+    }
+
+    protected void execute() {
+    	log();
+    }
+    
+    private void log() {
     	SmartDashboard.putData("angle pid", Robot.DRIVE_SYSTEM.getTurnController());
     	SmartDashboard.putNumber("angle", Robot.DRIVE_SYSTEM.getAngle());
     }
 
-    protected void execute() {}
-
     protected boolean isFinished() {
-        return Robot.DRIVE_SYSTEM.isAngleOnTarget();
+        return Robot.DRIVE_SYSTEM.isTurnAngleOnTarget();
     }
 
     protected void end() {
     	Robot.DRIVE_SYSTEM.stop();
-    	Robot.DRIVE_SYSTEM.disablePID();
+    	Robot.DRIVE_SYSTEM.disableTurnPID();
     	Robot.DRIVE_SYSTEM.resetNavX();
     }
 
-    protected void interrupted() {}
+    protected void interrupted() {
+    	Robot.DRIVE_SYSTEM.stop();
+    	Robot.DRIVE_SYSTEM.disableTurnPID();
+    	Robot.DRIVE_SYSTEM.resetNavX();
+    }
 }

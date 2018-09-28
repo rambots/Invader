@@ -12,13 +12,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ClimberCommand extends Command {
 	
     public ClimberCommand() {
-    	requires(Robot.CLIMBER_SYSTEM);
+    	requires(Robot.CLIMBER);
     }
 
     protected void initialize() {}
 
     protected void execute() {
-    	Robot.CLIMBER_SYSTEM.setPower(Robot.GAMEPAD.getLeftYAxis());
+    	Robot.CLIMBER.setPower(Robot.GAMEPAD.getLeftYAxis());
     }
 
     protected boolean isFinished() {
@@ -26,7 +26,7 @@ public class ClimberCommand extends Command {
     }
 
     protected void end() {
-    	Robot.CLIMBER_SYSTEM.stop();
+    	Robot.CLIMBER.stop();
     }
 
     protected void interrupted() {

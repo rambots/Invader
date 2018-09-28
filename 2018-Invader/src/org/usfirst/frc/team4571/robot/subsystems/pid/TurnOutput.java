@@ -4,14 +4,15 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class TurnOutput implements PIDOutput {
-	private DifferentialDrive myRobot;
+	private DifferentialDrive differentialDrive;
 	
 	public TurnOutput(DifferentialDrive drive) {
-		this.myRobot = drive;
+		this.differentialDrive = drive;
 	}
 
 	@Override
 	public void pidWrite(double output) {
-		this.myRobot.tankDrive(output, -output);
+		differentialDrive.tankDrive(output, -output);
 	}
+
 }

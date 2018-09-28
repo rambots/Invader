@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PulleyCommand extends Command {
 
     public PulleyCommand() {
-    	requires(Robot.PULLEY_SYSTEM);
+    	requires(Robot.PULLEY);
     }
 
     protected void initialize() {
@@ -16,11 +16,11 @@ public class PulleyCommand extends Command {
 
     protected void execute() {
     	if(Robot.GAMEPAD.isDPadPressedUp()) {
-    		Robot.PULLEY_SYSTEM.goUp();
+    		Robot.PULLEY.goUp();
     	} else if (Robot.GAMEPAD.isDPadPressedDown()) {
-    		Robot.PULLEY_SYSTEM.goDown();
+    		Robot.PULLEY.goDown();
     	} else {
-    		Robot.PULLEY_SYSTEM.setPulley(0.0);
+    		Robot.PULLEY.setPulley(0.0);
     	}
     }
     

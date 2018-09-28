@@ -8,19 +8,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * This subsystem contains all the components of the climber system.
- * This only consists of one motor that will elevate the claws to grab 
- * the bar.
- * 
- * @author Mahim
- */
-public class ClimberSystem extends Subsystem {
+public class Climber extends Subsystem {
 	private WPI_TalonSRX climberMotor;
 	private final static double UP_SPEED   =  0.9,
 								DOWN_SPEED = -0.9;
 	
-	public ClimberSystem() {
+	public Climber() {
 		this.climberMotor = new WPI_TalonSRX(RobotMap.CLIMBER_MOTOR);
 		this.climberMotor.setExpiration(Robot.DEFAULT_PERIOD);
 		this.climberMotor.setSafetyEnabled(false);

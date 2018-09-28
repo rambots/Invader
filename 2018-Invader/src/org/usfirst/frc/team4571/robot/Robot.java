@@ -7,7 +7,10 @@
 
 package org.usfirst.frc.team4571.robot;
 
+import org.usfirst.frc.team4571.robot.commands.auto.GetSwitchLeft;
+import org.usfirst.frc.team4571.robot.commands.auto.GetSwitchRight;
 import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
+import org.usfirst.frc.team4571.robot.commands.auto.SetElevatorHeight;
 import org.usfirst.frc.team4571.robot.commands.auto.TurnCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.arm.ElevatorCommand;
@@ -15,11 +18,13 @@ import org.usfirst.frc.team4571.robot.commands.teleop.arm.PulleyCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.climber.ClimberCommand;
 import org.usfirst.frc.team4571.robot.commands.teleop.drive.TeleOPDrive;
 import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
-import org.usfirst.frc.team4571.robot.subsystems.ClimberSystem;
+import org.usfirst.frc.team4571.robot.subsystems.Climber;
 import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team4571.robot.subsystems.Elevator;
-import org.usfirst.frc.team4571.robot.subsystems.PulleySystem;
+import org.usfirst.frc.team4571.robot.subsystems.Pulley;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -34,43 +39,61 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+	public String gameData;
+	public DriverStation ds = DriverStation.getInstance();
 	
 	// JOYSTICKS
-	public static final DriveStick 	    	LEFT_DRIVE_STICK 	 = new DriveStick(RobotMap.LEFT_JOYSTICK);
-	public static final DriveStick 	    	RIGHT_DRIVE_STICK 	 = new DriveStick(RobotMap.RIGHT_JOYSTICK);
-	public static final Gamepad				GAMEPAD			 	 = new Gamepad(RobotMap.GAMEPAD);
+	public static final DriveStick LEFT_DRIVE_STICK  = new DriveStick(RobotMap.LEFT_JOYSTICK);
+	public static final DriveStick RIGHT_DRIVE_STICK = new DriveStick(RobotMap.RIGHT_JOYSTICK);
+	public static final Gamepad	   GAMEPAD			 = new Gamepad(RobotMap.GAMEPAD);
 	
 	// SUBSYSTEMS
-	public static final Elevator			ELEVATOR			 = new Elevator();
-	public static final DriveSystem 		DRIVE_SYSTEM 		 = new DriveSystem();
-	public static final ArmSystem			ARM_SYSTEM			 = new ArmSystem();
-	public static final PulleySystem		PULLEY_SYSTEM		 = new PulleySystem();
-	public static final ClimberSystem		CLIMBER_SYSTEM		 = new ClimberSystem();
+	public static final Elevator	ELEVATOR	 = new Elevator();
+	public static final DriveSystem DRIVE_SYSTEM = new DriveSystem();
+	public static final ArmSystem	ARM_SYSTEM	 = new ArmSystem();
+	public static final Pulley		PULLEY		 = new Pulley();
+	public static final Climber		CLIMBER		 = new Climber();
 	
 	// DRIVE
-	public static final TeleOPDrive 		TELE_OP_DRIVE 		 = new TeleOPDrive();
-	public static final TurnCommand			TURN_RIGHT_90		 = new TurnCommand(90);
+	public static final TeleOPDrive TELE_OP_DRIVE = new TeleOPDrive();
 	
 	// ARM
-	public static final ArmCommand			ARM_COMMAND			 = new ArmCommand();
-	public static final ElevatorCommand		ELEVATOR_COMMAND	 = new ElevatorCommand();
-	public static final PulleyCommand		PULLEY_COMMAND		 = new PulleyCommand();
+	public static final ArmCommand		ARM_COMMAND		 = new ArmCommand();
+	public static final ElevatorCommand	ELEVATOR_COMMAND = new ElevatorCommand();
+	public static final PulleyCommand	PULLEY_COMMAND	 = new PulleyCommand();
 	
 	// CLIMBER
-	public static final ClimberCommand		CLIMBER_COMMAND      = new ClimberCommand();
+	public static final ClimberCommand CLIMBER_COMMAND = new ClimberCommand();
+	
+	public enum Placement {
+		Left, Middle, Right;
+		
+		Placement() {
+			
+		}
+	}
 	
 	Command m_autonomousCommand;
+	Placement placement;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
+	SendableChooser<Placement> placementChooser = new SendableChooser<>();
 
 	@Override
 	public void robotInit() {
-		autoChooser.addObject("Cross Line", new RunMotors(4.5, 0.5));
-		autoChooser.addObject("run reversed", new RunMotors(3, -0.5));
+		autoChooser.addDefault("Cross Line", new RunMotors(4.5, 0.5));
+		autoChooser.addObject("if left", new GetSwitchLeft());
+		autoChooser.addObject("if right", new GetSwitchRight());
 		SmartDashboard.putData("Auto mode", autoChooser);
+		
+		placementChooser.addObject("left", Placement.Left);
+		placementChooser.addObject("middle", Placement.Middle);
+		placementChooser.addObject("right", Placement.Right);
+		SmartDashboard.putData("alliance placement", placementChooser);
 	}
 
 	@Override
 	public void disabledInit() {
+		Scheduler.getInstance().removeAll();
 		DRIVE_SYSTEM.resetNavX();
 		ELEVATOR.resetEncoder();
 	}
@@ -82,10 +105,17 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		gameData = ds.getGameSpecificMessage();
 		m_autonomousCommand = autoChooser.getSelected();
+		placement = placementChooser.getSelected();
 		
-		if (m_autonomousCommand != null) {
+		if (m_autonomousCommand != null && gameData.charAt(0) == 'R' && m_autonomousCommand.getName().equals("right")) {
 			m_autonomousCommand.start();
+		} else if (m_autonomousCommand != null && gameData.charAt(0) == 'L' && m_autonomousCommand.getName().equals("left")) {
+			m_autonomousCommand.start();
+		} else {
+			Scheduler.getInstance().add(new RunMotors(4.5, 0.5));
+//			Scheduler.getInstance().add(new GetSwitchLeft());
 		}
 	}
 	
@@ -104,7 +134,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("left arm speed", ARM_SYSTEM.getLeftArmSpeed());
 		SmartDashboard.putNumber("right arm speed", ARM_SYSTEM.getRightArmSpeed());
 		// Climber Motor
-		SmartDashboard.putNumber("Climber Motor Speed", CLIMBER_SYSTEM.getClimberSpeed());
+		SmartDashboard.putNumber("Climber Motor Speed", CLIMBER.getClimberSpeed());
 	}
 
 	@Override
@@ -127,7 +157,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().add(ARM_COMMAND);
 		Scheduler.getInstance().add(ELEVATOR_COMMAND);
 		Scheduler.getInstance().add(PULLEY_COMMAND);
-//		LEFT_DRIVE_STICK.button1WhenPressed(TURN_90_DEGREES);
+//		LEFT_DRIVE_STICK.button1WhenPressed(GO_HALF);
 	}
 
 	@Override

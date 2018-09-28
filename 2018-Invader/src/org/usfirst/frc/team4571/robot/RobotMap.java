@@ -32,7 +32,8 @@ public class RobotMap {
 	public static final int LEFT_ARM_MOTOR  = 9,
 							RIGHT_ARM_MOTOR = 8,
 							ELEVATOR_MOTOR	= 5,
-							PULLEY_MOTOR    = 6;
+							PULLEY_MOTOR    = 6,
+							LIMIT_SWITCH    = 0;
 	
 	/** Climber system motor channels */
 	public static final int CLIMBER_MOTOR = 7;

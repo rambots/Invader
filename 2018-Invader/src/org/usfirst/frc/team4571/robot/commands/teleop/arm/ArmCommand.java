@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Mahim
  */
 public class ArmCommand extends Command {
-	private static final double OPTIMAL_OUTTAKE_SPEED = -0.50,
-								LOWER_SPEED			  = -0.3;
+	private static final double OPTIMAL_OUTTAKE_SPEED = 0.50,
+								LOWER_SPEED			  = 0.3;
 
     public ArmCommand() {
     	requires(Robot.ARM_SYSTEM);
@@ -27,9 +27,9 @@ public class ArmCommand extends Command {
     	double leftTrigger  = Robot.GAMEPAD.getLeftTrigger();
     	
     	if (rightTrigger > 0 && rightTrigger > leftTrigger) {
-    		Robot.ARM_SYSTEM.setArmMotors(rightTrigger);
+    		Robot.ARM_SYSTEM.setArmMotors(-rightTrigger);
     	} else if (leftTrigger > 0 && leftTrigger > rightTrigger) {
-    		Robot.ARM_SYSTEM.setArmMotors(-leftTrigger);
+    		Robot.ARM_SYSTEM.setArmMotors(leftTrigger);
     	} else if (Robot.GAMEPAD.getButtonB().get()) {
     		Robot.ARM_SYSTEM.setArmMotors(OPTIMAL_OUTTAKE_SPEED);
     	} else if (Robot.GAMEPAD.getButtonA().get()) {

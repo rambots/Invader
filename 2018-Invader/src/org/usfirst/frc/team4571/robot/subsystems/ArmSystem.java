@@ -9,13 +9,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * This subsystem contains all the components of the arm system.
- * Such as:<br>
- * + The motors for the arms to intake and outtake the power cubes.<br>
- * 
- * @author Mahim
- */
 public class ArmSystem extends Subsystem {
 	WPI_VictorSPX  		 leftArmMotor,
 				   		 rightArmMotor;
@@ -25,7 +18,7 @@ public class ArmSystem extends Subsystem {
 		this.leftArmMotor  = new WPI_VictorSPX(RobotMap.LEFT_ARM_MOTOR);
 		this.rightArmMotor = new WPI_VictorSPX(RobotMap.RIGHT_ARM_MOTOR);
 		
-		this.leftArmMotor.setInverted(true); 
+		this.rightArmMotor.setInverted(true); 
 		
 		this.leftArmMotor.setExpiration(Robot.DEFAULT_PERIOD);
 		this.rightArmMotor.setExpiration(Robot.DEFAULT_PERIOD);
