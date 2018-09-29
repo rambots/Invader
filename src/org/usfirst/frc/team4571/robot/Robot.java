@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
     public static final Elevator	ELEVATOR	 = new Elevator();
     public static final DriveSystem DRIVE_SYSTEM = new DriveSystem();
     public static final ArmSystem	ARM_SYSTEM	 = new ArmSystem();
-    public static final Pulley		PULLEY		 = new Pulley();
+    public static final Pulley      PULLEY       = new Pulley();
     public static final Climber		CLIMBER		 = new Climber();
 
     // DRIVE
