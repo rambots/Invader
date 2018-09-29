@@ -106,16 +106,11 @@ public class Robot extends TimedRobot {
             m_autonomousCommand.start();
         } else {
             Scheduler.getInstance().add(new RunMotors(4.5, 0.5));
-//			Scheduler.getInstance().add(new GetSwitchLeft());
         }
     }
 
-    /**
-     * This method contains the information you want to track an test during tele
-     * operated period
-     */
     private void log() {
-        // Transmission Motors
+        // Chassis Motors
         SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
         SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
         SmartDashboard.putNumber("top right speed", DRIVE_SYSTEM.getTopRightMotorSpeed());
@@ -148,7 +143,6 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().add(ARM_COMMAND);
         Scheduler.getInstance().add(ELEVATOR_COMMAND);
         Scheduler.getInstance().add(PULLEY_COMMAND);
-//		LEFT_DRIVE_STICK.button1WhenPressed(GO_HALF);
     }
 
     @Override
