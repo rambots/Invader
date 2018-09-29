@@ -65,7 +65,6 @@ public class Robot extends TimedRobot {
     }
 
     private Command m_autonomousCommand;
-    private Placement placement;
     private SendableChooser<Command> autoChooser = new SendableChooser<>();
     private SendableChooser<Placement> placementChooser = new SendableChooser<>();
 
@@ -98,7 +97,7 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         String gameData = ds.getGameSpecificMessage();
         m_autonomousCommand = autoChooser.getSelected();
-        placement = placementChooser.getSelected();
+        Placement placement = placementChooser.getSelected();
 
         if (m_autonomousCommand != null && gameData.charAt(0) == 'R' && m_autonomousCommand.getName().equals("right")) {
             m_autonomousCommand.start();
