@@ -10,9 +10,8 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ArmSystem extends Subsystem {
-	WPI_VictorSPX  		 leftArmMotor,
-				   		 rightArmMotor;
-	SpeedControllerGroup armMotors;
+	private WPI_VictorSPX leftArmMotor, rightArmMotor;
+	private SpeedControllerGroup armMotors;
 	
 	public ArmSystem() {
 		this.leftArmMotor  = new WPI_VictorSPX(RobotMap.LEFT_ARM_MOTOR);
