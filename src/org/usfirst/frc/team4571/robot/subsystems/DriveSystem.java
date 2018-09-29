@@ -15,12 +15,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveSystem extends Subsystem {
-	private WPI_TalonSRX 	    topLeftMotor,
-							    bottomLeftMotor,
-						        topRightMotor,
-							    bottomRightMotor;
-	private DifferentialDrive   differentialDrive;
-	private final AHRS		    navX;
+	private WPI_TalonSRX topLeftMotor,  bottomLeftMotor,
+                         topRightMotor, bottomRightMotor;
+
+	private DifferentialDrive differentialDrive;
+
+	private final AHRS navX;
 
 	private final PIDController turnController;
 	
@@ -71,7 +71,7 @@ public class DriveSystem extends Subsystem {
 		this.differentialDrive.setExpiration(Robot.DEFAULT_PERIOD);
 		this.differentialDrive.setSafetyEnabled(false);
 		
-		this.navX 		    = new AHRS(Port.kMXP);
+		this.navX = new AHRS(Port.kMXP);
 
 		TurnOutput turnOutput = new TurnOutput(differentialDrive);
 		this.turnController = new PIDController(rotate_K, rotate_I, rotate_D, navX, turnOutput);
