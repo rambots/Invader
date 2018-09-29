@@ -28,15 +28,15 @@ public class DriveSystem extends Subsystem {
 	 * For rotating
 	 */
 	private static final double rotate_K = 1.3,
-								rotate_I = 0.0,
-								rotate_D = 3.1;
+                                rotate_I = 0.0,
+                                rotate_D = 3.1;
 	
 	/**
 	 * For maintaining steady angle
 	 */
 	private static final double tuning_K = 0,
-								tuning_I = 0,
-								tuning_D = 0;
+                                tuning_I = 0,
+                                tuning_D = 0;
 								
 	public DriveSystem() {
 		this.topLeftMotor 	  = new WPI_TalonSRX(RobotMap.TOP_LEFT_MOTOR);
