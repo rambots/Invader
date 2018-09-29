@@ -21,8 +21,7 @@ public class DriveSystem extends Subsystem {
 							    bottomRightMotor;
 	private DifferentialDrive   differentialDrive;
 	private final AHRS		    navX;
-	
-	private final TurnOutput    turnOutput;
+
 	private final PIDController turnController;
 	
 	/**
@@ -73,8 +72,8 @@ public class DriveSystem extends Subsystem {
 		this.differentialDrive.setSafetyEnabled(false);
 		
 		this.navX 		    = new AHRS(Port.kMXP);
-		
-		this.turnOutput     = new TurnOutput(differentialDrive);
+
+		TurnOutput turnOutput = new TurnOutput(differentialDrive);
 		this.turnController = new PIDController(rotate_K, rotate_I, rotate_D, navX, turnOutput);
 	}
 	
