@@ -7,29 +7,21 @@
 
 package org.usfirst.frc.team4571.robot;
 
-import org.usfirst.frc.team4571.robot.commands.auto.GetSwitchLeft;
-import org.usfirst.frc.team4571.robot.commands.auto.GetSwitchRight;
-import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
-import org.usfirst.frc.team4571.robot.commands.auto.SetElevatorHeight;
-import org.usfirst.frc.team4571.robot.commands.auto.TurnCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.arm.ElevatorCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.arm.PulleyCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.climber.ClimberCommand;
-import org.usfirst.frc.team4571.robot.commands.teleop.drive.TeleOPDrive;
-import org.usfirst.frc.team4571.robot.subsystems.ArmSystem;
-import org.usfirst.frc.team4571.robot.subsystems.Climber;
-import org.usfirst.frc.team4571.robot.subsystems.DriveSystem;
-import org.usfirst.frc.team4571.robot.subsystems.Elevator;
-import org.usfirst.frc.team4571.robot.subsystems.Pulley;
-
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4571.robot.commands.auto.GetSwitchLeft;
+import org.usfirst.frc.team4571.robot.commands.auto.GetSwitchRight;
+import org.usfirst.frc.team4571.robot.commands.auto.RunMotors;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.ArmCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.ElevatorCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.arm.PulleyCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.climber.ClimberCommand;
+import org.usfirst.frc.team4571.robot.commands.teleop.drive.TeleOPDrive;
+import org.usfirst.frc.team4571.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,8 +31,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
-	public String gameData;
-	public DriverStation ds = DriverStation.getInstance();
+    private DriverStation ds = DriverStation.getInstance();
 	
 	// JOYSTICKS
 	public static final DriveStick LEFT_DRIVE_STICK  = new DriveStick(RobotMap.LEFT_JOYSTICK);
@@ -55,15 +46,15 @@ public class Robot extends TimedRobot {
 	public static final Climber		CLIMBER		 = new Climber();
 	
 	// DRIVE
-	public static final TeleOPDrive TELE_OP_DRIVE = new TeleOPDrive();
+	private static final TeleOPDrive TELE_OP_DRIVE = new TeleOPDrive();
 	
 	// ARM
-	public static final ArmCommand		ARM_COMMAND		 = new ArmCommand();
-	public static final ElevatorCommand	ELEVATOR_COMMAND = new ElevatorCommand();
-	public static final PulleyCommand	PULLEY_COMMAND	 = new PulleyCommand();
+	private static final ArmCommand	     ARM_COMMAND = new ArmCommand();
+	private static final ElevatorCommand ELEVATOR_COMMAND = new ElevatorCommand();
+	private static final PulleyCommand   PULLEY_COMMAND = new PulleyCommand();
 	
 	// CLIMBER
-	public static final ClimberCommand CLIMBER_COMMAND = new ClimberCommand();
+	private static final ClimberCommand CLIMBER_COMMAND = new ClimberCommand();
 	
 	public enum Placement {
 		Left, Middle, Right;
@@ -73,10 +64,10 @@ public class Robot extends TimedRobot {
 		}
 	}
 	
-	Command m_autonomousCommand;
-	Placement placement;
-	SendableChooser<Command> autoChooser = new SendableChooser<>();
-	SendableChooser<Placement> placementChooser = new SendableChooser<>();
+	private Command m_autonomousCommand;
+	private Placement placement;
+	private SendableChooser<Command> autoChooser = new SendableChooser<>();
+	private SendableChooser<Placement> placementChooser = new SendableChooser<>();
 
 	@Override
 	public void robotInit() {
@@ -105,7 +96,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		gameData = ds.getGameSpecificMessage();
+        String gameData = ds.getGameSpecificMessage();
 		m_autonomousCommand = autoChooser.getSelected();
 		placement = placementChooser.getSelected();
 		
@@ -123,7 +114,7 @@ public class Robot extends TimedRobot {
 	 * This method contains the information you want to track an test during tele 
 	 * operated period
 	 */
-	public void log() {
+    private void log() {
 		// Transmission Motors
 		SmartDashboard.putNumber("top left speed", DRIVE_SYSTEM.getTopLeftMotorSpeed());
     	SmartDashboard.putNumber("bottom left speed", DRIVE_SYSTEM.getBottomLeftMotorSpeed());
