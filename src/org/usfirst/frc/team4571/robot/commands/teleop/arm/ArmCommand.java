@@ -12,31 +12,31 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Mahim
  */
 public class ArmCommand extends Command {
-	private static final double OPTIMAL_OUTTAKE_SPEED = 0.50,
-								LOWER_SPEED			  = 0.3;
+    private static final double OPTIMAL_OUTTAKE_SPEED = 0.50,
+                                LOWER_SPEED			  = 0.3;
 
     public ArmCommand() {
-    	requires(Robot.ARM_SYSTEM);
+        requires(Robot.ARM_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	double rightTrigger = Robot.GAMEPAD.getRightTrigger();
-    	double leftTrigger  = Robot.GAMEPAD.getLeftTrigger();
-    	
-    	if (rightTrigger > 0 && rightTrigger > leftTrigger) {
-    		Robot.ARM_SYSTEM.setArmMotors(-rightTrigger);
-    	} else if (leftTrigger > 0 && leftTrigger > rightTrigger) {
-    		Robot.ARM_SYSTEM.setArmMotors(leftTrigger);
-    	} else if (Robot.GAMEPAD.getButtonB().get()) {
-    		Robot.ARM_SYSTEM.setArmMotors(OPTIMAL_OUTTAKE_SPEED);
-    	} else if (Robot.GAMEPAD.getButtonA().get()) {
-    		Robot.ARM_SYSTEM.setArmMotors(LOWER_SPEED);
-    	} else {
-    		Robot.ARM_SYSTEM.stop();
-    	}
+        double rightTrigger = Robot.GAMEPAD.getRightTrigger();
+        double leftTrigger  = Robot.GAMEPAD.getLeftTrigger();
+
+        if (rightTrigger > 0 && rightTrigger > leftTrigger) {
+            Robot.ARM_SYSTEM.setArmMotors(-rightTrigger);
+        } else if (leftTrigger > 0 && leftTrigger > rightTrigger) {
+            Robot.ARM_SYSTEM.setArmMotors(leftTrigger);
+        } else if (Robot.GAMEPAD.getButtonB().get()) {
+            Robot.ARM_SYSTEM.setArmMotors(OPTIMAL_OUTTAKE_SPEED);
+        } else if (Robot.GAMEPAD.getButtonA().get()) {
+            Robot.ARM_SYSTEM.setArmMotors(LOWER_SPEED);
+        } else {
+            Robot.ARM_SYSTEM.stop();
+        }
     }
 
     protected boolean isFinished() {
@@ -44,7 +44,7 @@ public class ArmCommand extends Command {
     }
 
     protected void end() {
-    	Robot.ARM_SYSTEM.stop();
+        Robot.ARM_SYSTEM.stop();
     }
 
     protected void interrupted() {}
