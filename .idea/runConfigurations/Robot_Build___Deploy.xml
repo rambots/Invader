@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Robot Build &amp; Deploy" type="AntRunConfiguration" factoryName="Ant Target">
-    <antsettings antfile="file://$PROJECT_DIR$/build.xml" target="deploy" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
-</component>
