@@ -33,7 +33,7 @@ public class RobotMap {
                             RIGHT_ARM_MOTOR = 8,
                             ELEVATOR_MOTOR	= 5,
                             PULLEY_MOTOR    = 6,
-                            LIMIT_SWITCH    = 0;
+                            LIMIT_SWITCH    = 0; // Make sure it is on the DIO Port
 
     /** Climber system motor channels */
     public static final int CLIMBER_MOTOR = 7;
