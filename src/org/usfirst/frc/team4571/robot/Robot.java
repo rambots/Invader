@@ -34,24 +34,24 @@ public class Robot extends TimedRobot {
     private DriverStation ds = DriverStation.getInstance();
 
     // JOYSTICKS
-    public static final DriveStick LEFT_DRIVE_STICK  = new DriveStick(RobotMap.LEFT_JOYSTICK);
+    public static final DriveStick LEFT_DRIVE_STICK = new DriveStick(RobotMap.LEFT_JOYSTICK);
     public static final DriveStick RIGHT_DRIVE_STICK = new DriveStick(RobotMap.RIGHT_JOYSTICK);
-    public static final Gamepad	   GAMEPAD			 = new Gamepad(RobotMap.GAMEPAD);
+    public static final Gamepad GAMEPAD = new Gamepad(RobotMap.GAMEPAD);
 
     // SUBSYSTEMS
-    public static final Elevator	ELEVATOR	 = new Elevator();
+    public static final Elevator ELEVATOR = new Elevator();
     public static final DriveSystem DRIVE_SYSTEM = new DriveSystem();
-    public static final ArmSystem	ARM_SYSTEM	 = new ArmSystem();
-    public static final Pulley      PULLEY       = new Pulley();
-    public static final Climber		CLIMBER		 = new Climber();
+    public static final ArmSystem ARM_SYSTEM = new ArmSystem();
+    public static final Pulley PULLEY = new Pulley();
+    public static final Climber CLIMBER = new Climber();
 
     // DRIVE
     private static final TeleOPDrive TELE_OP_DRIVE = new TeleOPDrive();
 
     // ARM
-    private static final ArmCommand	     ARM_COMMAND = new ArmCommand();
+    private static final ArmCommand ARM_COMMAND = new ArmCommand();
     private static final ElevatorCommand ELEVATOR_COMMAND = new ElevatorCommand();
-    private static final PulleyCommand   PULLEY_COMMAND = new PulleyCommand();
+    private static final PulleyCommand PULLEY_COMMAND = new PulleyCommand();
 
     // CLIMBER
     private static final ClimberCommand CLIMBER_COMMAND = new ClimberCommand();
