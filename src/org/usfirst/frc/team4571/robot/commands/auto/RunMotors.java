@@ -4,32 +4,24 @@ import org.usfirst.frc.team4571.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
-/**
- *
- */
 public class RunMotors extends TimedCommand {
+	private double power;
 
-    public RunMotors(double timeout) {
-        super(timeout);
+    public RunMotors(double runtime, double power) {
+        super(runtime);
         requires(Robot.DRIVE_SYSTEM);
+        this.power = power;
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+    protected void initialize() {}
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DRIVE_SYSTEM.drive(0.35, 0.35);
+    	Robot.DRIVE_SYSTEM.drive(power, power);
     }
 
-    // Called once after timeout
     protected void end() {
     	Robot.DRIVE_SYSTEM.stop();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+    protected void interrupted() {}
 }
