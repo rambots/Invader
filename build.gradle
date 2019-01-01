@@ -1,3 +1,7 @@
+import jaci.openrio.gradle.GradleRIOPlugin
+import jaci.openrio.gradle.frc.FRCJavaArtifact
+import jaci.openrio.gradle.frc.RoboRIO
+
 plugins {
     id "java"
     id "eclipse"
@@ -5,19 +9,16 @@ plugins {
     id "jaci.openrio.gradle.GradleRIO" version "2018.01.22"
 }
 
-def TEAM = 4571
-def ROBOT_CLASS = "frc.team4571.robot.Robot"
-
 // Define my targets (RoboRIO) and artifacts (deployable files)
 // This is added by GradleRIO's backing project EmbeddedTools.
 deploy {
     targets {
-        target("roborio", jaci.openrio.gradle.frc.RoboRIO) {
-            team = TEAM
+        target("roborio", RoboRIO) {
+            team = TEAM.toInteger()
         }
     }
     artifacts {
-        artifact('frcJava', jaci.openrio.gradle.frc.FRCJavaArtifact) {
+        artifact('frcJava', FRCJavaArtifact) {
             targets << "roborio"
         }
     }
@@ -46,7 +47,7 @@ dependencies {
 // knows where to look for our Robot Class.
 jar {
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    manifest jaci.openrio.gradle.GradleRIOPlugin.javaManifest(ROBOT_CLASS)
+    manifest GradleRIOPlugin.javaManifest(ROBOT_CLASS)
 }
 
 task wrapper(type: Wrapper) {
