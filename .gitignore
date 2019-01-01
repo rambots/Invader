@@ -3,3 +3,6 @@
 /.idea/
 /dist/
 /.gradle/
+.classpath
+.project
+.settings
